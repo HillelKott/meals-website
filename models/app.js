@@ -7,6 +7,7 @@ const headerH2 = document.querySelector('.header-h2');
 const headerImg = document.querySelector('.header-img');
 const intrudoctions = document.querySelector('.intrudoctions');
 const ingredient = document.querySelector('.ingredient');
+const ifarme = document.querySelector('.ifarme');
 
 let a;
 const log = async () => {
@@ -56,11 +57,13 @@ const openClikcedRecepi = (e) => {
     headerImg.src = a.meals[clikedItem].strMealThumb;
     checkIngredient(a.meals[clikedItem])
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
-    ingredient.textContent = '';
+    ifarme.src = a.meals[clikedItem].strYoutube;
+    
     // https://www.youtube.com/watch?v=eKPNqFoWkCU&feature=youtu.be
     // mealsDiv.classList.add('meals-cliked');
 }
 const checkIngredient = (obj) => {
+    ingredient.textContent = '';
     for (const key in obj) {
         let str = key;
         let inRes = /strIngredient/.test(str);
@@ -68,7 +71,7 @@ const checkIngredient = (obj) => {
 
         if (inRes && obj[key] || meRes && obj[key]) {
             console.log(obj[key]);
-            ingredient.textContent +=obj[key]
+            ingredient.textContent += ` ${obj[key]}`
         }
         // continue here with cotact the inRes and meRes...
     }
