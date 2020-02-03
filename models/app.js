@@ -75,7 +75,6 @@ const checkIngredient = (obj) => {
             li.textContent += ` ${obj[key]}`;
             ingUl.appendChild(li)
         }
-        // continue here with cotact the inRes and meRes...
     }
 }
 
