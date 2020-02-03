@@ -59,9 +59,9 @@ const openClikcedRecepi = (e) => {
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
     // `${a.meals[clikedItem].strYoutube.slice(0,24)}embed${str.slice(29)}`
 
-    console.log(`${a.meals[clikedItem].strYoutube.slice(0,24)}embed${str.slice(29)}`);
+    console.log(`${a.meals[clikedItem].strYoutube.slice(0,24)}embed${a.meals[clikedItem].strYoutube.slice(29)}`);
     ifarme.classList.remove('none')
-    ifarme.src = a.meals[clikedItem].strYoutube;
+    ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0,24)}embed${a.meals[clikedItem].strYoutube.slice(29)}`;
 
     // https://www.youtube.com/watch?v=eKPNqFoWkCU&feature=youtu.be
     // mealsDiv.classList.add('meals-cliked');
