@@ -6,7 +6,7 @@ const mealsUl = document.querySelector('.meals--ul');
 const headerH2 = document.querySelector('.header-h2');
 const headerImg = document.querySelector('.header-img');
 const intrudoctions = document.querySelector('.intrudoctions');
-const ingredient = document.querySelector('.ingredient');
+const ingUl = document.querySelector('.ing-ul');
 const ifarme = document.querySelector('.ifarme');
 
 let a;
@@ -63,7 +63,7 @@ const openClikcedRecepi = (e) => {
     // mealsDiv.classList.add('meals-cliked');
 }
 const checkIngredient = (obj) => {
-    ingredient.textContent = '';
+    ingUl.textContent = '';
     for (const key in obj) {
         let str = key;
         let inRes = /strIngredient/.test(str);
@@ -71,10 +71,13 @@ const checkIngredient = (obj) => {
 
         if (inRes && obj[key] || meRes && obj[key]) {
             // console.log(obj[key]);
-            ingredient.textContent += ` ${obj[key]}`
+            const li = document.createElement('li');
+            li.textContent += ` ${obj[key]}`;
+            ingUl.appendChild(li)
         }
         // continue here with cotact the inRes and meRes...
     }
 }
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
+
