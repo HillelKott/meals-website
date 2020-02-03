@@ -8,6 +8,8 @@ const headerImg = document.querySelector('.header-img');
 const intrudoctions = document.querySelector('.intrudoctions');
 const ingUl = document.querySelector('.ing-ul');
 const ifarme = document.querySelector('.ifarme');
+const goToOunerA = document.querySelector('.go-to-ouner');
+const likeImg = document.querySelector('.like-img');
 
 let a;
 const log = async () => {
@@ -44,12 +46,8 @@ function insertDataToLi(data) {
 const openClikcedRecepi = (e) => {
     let clikedItem;
     if (e.target.id) {
-        console.log(e.target.id);
         clikedItem = e.target.id.slice(3, 4);
-        console.log(a.meals[clikedItem]);
-
     } else {
-        console.log(e.target.parentNode.id);
         clikedItem = e.target.parentNode.id.slice(3, 4);
     };
 
@@ -57,26 +55,57 @@ const openClikcedRecepi = (e) => {
     headerImg.src = a.meals[clikedItem].strMealThumb;
     checkIngredient(a.meals[clikedItem])
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
-    ifarme.classList.remove('none')
-    ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0,24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
+    goToOunerA.classList.remove('none')
+    goToOunerA.href = a.meals[clikedItem].strSource;
+    likeImg.classList.remove('none');
+    likeImg.setAttribute('id', `add-to=${a.meals[clikedItem].idMeal}`)
+    ifarme.classList.remove('none');
+    ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 
     // mealsDiv.classList.add('meals-cliked');
 }
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
+    var builderCounter = 0;
     for (const key in obj) {
-        let str = key;
-        let inRes = /strIngredient/.test(str);
-        let meRes = /strMeasure/.test(str);
+        let inRes = /strIngredient/.test(key);
+        let meRes = /strMeasure/.test(key);
 
-        if (inRes && obj[key] || meRes && obj[key]) {
-            // console.log(obj[key]);
-            const li = document.createElement('li');
-            li.textContent += ` ${obj[key]}`;
+        var li;
+        var span;
+        // not good try to replace
+        const spanBuilder = (createLi, text) => {
+            if (createLi) {
+                li = document.createElement('li');
+            }
+            span = document.createElement('span');
+            span.textContent = text;
             ingUl.appendChild(li)
+        };
+
+        if (inRes && obj[key] && inRes && obj[key] !== ' ') {
+            spanBuilder(true, ` ${obj[key]} : `);
+            li.appendChild(span);
+
+        }
+        if (meRes && obj[key] && meRes && obj[key] !== ' ') {
+            spanBuilder(false, ` ${obj[key]}`);
+            ingUl.children[builderCounter].appendChild(span);
+            builderCounter++;
+
         }
     }
 }
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
+const addToFav = (e) => {
+    console.log(etarget.id);
+
+}
+
+likeImg.addEventListener('click', addToFav, false);
+
+
+
+// 0527118855
