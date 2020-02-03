@@ -57,9 +57,9 @@ const openClikcedRecepi = (e) => {
     headerImg.src = a.meals[clikedItem].strMealThumb;
     checkIngredient(a.meals[clikedItem])
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
-    a.meals[clikedItem].strYoutube
+    // `${a.meals[clikedItem].strYoutube.slice(0,24)}embed${str.slice(29)}`
 
-    console.log(ifarme);
+    console.log(`${a.meals[clikedItem].strYoutube.slice(0,24)}embed${str.slice(29)}`);
     ifarme.classList.remove('none')
     ifarme.src = a.meals[clikedItem].strYoutube;
 
