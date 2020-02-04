@@ -1,6 +1,8 @@
 export const getRecepi = (id, recipe) => {
 
-    if (id) {        
+    if (id) {    
+        console.log(id);
+            
         return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(data => data.json())
         .catch(e => console.log(e))

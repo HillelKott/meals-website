@@ -14,7 +14,7 @@ const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
 const fetchData = (value1, value2) => {
-    return getRecepi(value1, value2)
+    getRecepi(value1, value2)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
         .then(() => console.log(a))
@@ -103,7 +103,7 @@ mealsUl.addEventListener('click', openClikcedRecepi, false);
 const addToFav = (e) => {
     fetchData(parseInt(e.target.id), false)
         .then(data => a = data)
-        .then(() =>  a)
+        // .then(() => console.log(a))
 
         .then(a => {
             const li = document.createElement('li');
