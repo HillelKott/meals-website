@@ -10,6 +10,7 @@ const ingUl = document.querySelector('.ing-ul');
 const ifarme = document.querySelector('.ifarme');
 const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
+const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
 const fetchData = (value) => {
@@ -88,13 +89,11 @@ const checkIngredient = (obj) => {
         if (inRes && obj[key] && inRes && obj[key] !== ' ') {
             spanBuilder(true, ` ${obj[key]} : `);
             li.appendChild(span);
-
         }
         if (meRes && obj[key] && meRes && obj[key] !== ' ') {
             spanBuilder(false, ` ${obj[key]}`);
             ingUl.children[builderCounter].appendChild(span);
             builderCounter++;
-
         }
     }
 }
@@ -102,10 +101,16 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
-    const favoriteReipe = [];
-    console.log(e.target.id);
+    fetchData(parseInt(e.target.id));
 
-}
+    const li = document.createElement('li');
+    li.textContent = 
+
+
+    favoritedItems
+    const favoriteReipes = [];
+    favoriteReipes.push(e.target.id);
+};
 
 likeImg.addEventListener('click', addToFav, false);
 
