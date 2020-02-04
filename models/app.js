@@ -14,10 +14,10 @@ const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
 const fetchData = (value1, value2) => {
-    getRecepi(value1, value2)
+    return getRecepi(value1, value2)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
-        .then(() => console.log(a))
+        // .then(() => console.log(a))
 };
 
 const recipeInputSearch = () => {
@@ -99,19 +99,17 @@ const checkIngredient = (obj) => {
 };
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
-
+var s;
 const addToFav = (e) => {
     fetchData(parseInt(e.target.id), false)
-        .then(data => a = data)
-        // .then(() => console.log(a))
-
-        .then(a => {
+        .then(data => s = data)
+        .then(s => {
             const li = document.createElement('li');
             const img = document.createElement('img');
-            console.log(li);
+            console.log(s);
 
-            li.textContent = a.strMeal;
-            img.src = a.strMealThumb;
+            li.textContent = s.strMeal;
+            img.src = s.strMealThumb;
         });
     // favoritedItems
     // const favoriteReipes = [];
