@@ -19,7 +19,11 @@ const fetchData = (value) => {
         .then(() => console.log(a))
 };
 
-recipeButton.addEventListener("click", log, false);
+const recipeInputSearch = () => {
+    fetchData(recipeInput.value)
+}
+
+recipeButton.addEventListener("click", recipeInputSearch, false);
 
 
 function insertDataToLi(data) {
@@ -61,8 +65,6 @@ const openClikcedRecepi = (e) => {
     likeImg.setAttribute('id', `${a.meals[clikedItem].idMeal}`)
     ifarme.classList.remove('none');
     ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
-
-    // mealsDiv.classList.add('meals-cliked');
 }
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
@@ -100,6 +102,7 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
+    const favoriteReipe = [];
     console.log(e.target.id);
 
 }
