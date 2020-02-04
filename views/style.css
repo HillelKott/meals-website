@@ -1,10 +1,15 @@
 .logo {
-  display: inline-block;
+  text-align: center;
 }
 
 .search {
-  display: inline-block;
+  text-align: center;
 }
+
+.topFavorite {
+  float: left;
+}
+
 .none {
   width: 0;
   height: 0;
@@ -30,6 +35,19 @@
   padding: 20px;
 }
 
+.none {
+  display: none;
+}
+
+.favorite-container:hover > .favoritedItems {
+  display: block;
+  z-index: 1;
+}
+
+.favoritedItems:hover {
+  display: block;
+}
+
 .like-img {
   width: 30px;
 }
@@ -38,12 +56,9 @@
   width: 33px;
 }
 
-/* .favoritedItems{ */
-
-/* } */
-
-.none {
-  display: none;
+.fav-img {
+  width: 75px;
+  border-radius: 50%;
 }
 
 header {

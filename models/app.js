@@ -33,6 +33,7 @@ function insertDataToLi(data) {
         return mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
     }
     mealsUl.innerHTML = null;
+    mealsDiv.classList.remove('none');
     for (let i = 0; i < data.meals.length; i++) {
         const li = document.createElement('li');
         li.setAttribute('id', `li-${i}`);
@@ -58,6 +59,7 @@ const openClikcedRecepi = (e) => {
 
     headerH2.textContent = a.meals[clikedItem].strMeal;
     headerImg.src = a.meals[clikedItem].strMealThumb;
+    headerImg.classList.remove('none');
     checkIngredient(a.meals[clikedItem])
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
     goToOunerA.classList.remove('none')
@@ -65,7 +67,7 @@ const openClikcedRecepi = (e) => {
     likeImg.classList.remove('none');
     likeImg.setAttribute('id', `${a.meals[clikedItem].idMeal}`)
     ifarme.classList.remove('none');
-    // ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
+    ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 }
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
@@ -106,8 +108,10 @@ const addToFav = (e) => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = a.meals[0].strMeal;
+            li.setAttribute('class', 'fav-title');
             img.src = a.meals[0].strMealThumb;
-            favoritedItems.classList.remove('none');
+            img.setAttribute('class', 'fav-img');
+            // favoritedItems.classList.remove('none');
 
             favoritedItems.appendChild(li);
             favoritedItems.appendChild(img);
@@ -116,7 +120,6 @@ const addToFav = (e) => {
 };
 
 likeImg.addEventListener('click', addToFav, false);
-
 
 
 // 0527118855
