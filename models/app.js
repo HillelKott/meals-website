@@ -13,15 +13,15 @@ const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
-const fetchData = (value) => {
-    getRecepi(value)
+const fetchData = (value) => {    
+    getRecepi(false, value)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
         .then(() => console.log(a))
 };
 
 const recipeInputSearch = () => {
-    fetchData(false, recipeInput.value)
+    fetchData( recipeInput.value)
 }
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
