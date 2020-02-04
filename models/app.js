@@ -13,15 +13,15 @@ const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
-const fetchData = (value) => {    
-    getRecepi(false, value)
+const fetchData = (value1, value2) => {
+    return getRecepi(value1, value2)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
         .then(() => console.log(a))
 };
 
 const recipeInputSearch = () => {
-    fetchData( recipeInput.value)
+    fetchData(false, recipeInput.value)
 }
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
@@ -96,17 +96,22 @@ const checkIngredient = (obj) => {
             builderCounter++;
         }
     }
-}
+};
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
-    fetchData(false, parseInt(e.target.id))
-        .then(data => {
+    fetchData(parseInt(e.target.id), false)
+        .then(data => a = data)
+        .then(() =>  a)
+
+        .then(a => {
             const li = document.createElement('li');
             const img = document.createElement('img');
-            li.textContent = data.strMeal;
-            img.src = strMealThumb;
+            console.log(li);
+
+            li.textContent = a.strMeal;
+            img.src = a.strMealThumb;
         });
     // favoritedItems
     // const favoriteReipes = [];
