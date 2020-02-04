@@ -13,8 +13,8 @@ const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 
 let a;
-const fetchData = async (value) => {
-    return getRecepi(value)
+const fetchData = (value) => {
+    getRecepi(value)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
         .then(() => console.log(a))
