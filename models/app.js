@@ -17,7 +17,7 @@ const fetchData = (value1, value2) => {
     return getRecepi(value1, value2)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
-        // .then(() => console.log(a))
+        .then(() => console.log(a))
 };
 
 const recipeInputSearch = () => {
@@ -101,15 +101,13 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 var s;
 const addToFav = (e) => {
-    fetchData(parseInt(e.target.id), false)
+    return fetchData(parseInt(e.target.id), false)
         .then(data => s = data)
-        .then(s => {
+        .then(() => {
             const li = document.createElement('li');
             const img = document.createElement('img');
-            console.log(s);
-
-            li.textContent = s.strMeal;
-            img.src = s.strMealThumb;
+            li.textContent = a.mels[0].strMeal;
+            img.src = a.mels[0].strMealThumb;
         });
     // favoritedItems
     // const favoriteReipes = [];
