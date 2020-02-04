@@ -107,10 +107,11 @@ const addToFav = (e) => {
             const img = document.createElement('img');
             li.textContent = a.meals[0].strMeal;
             img.src = a.meals[0].strMealThumb;
-            favoritedItems.appendChild('li');
-            favoritedItems.appendChild('img');
-
             favoritedItems.classList.remove('none');
+
+            favoritedItems.appendChild(li);
+            favoritedItems.appendChild(img);
+
         });
 };
 
