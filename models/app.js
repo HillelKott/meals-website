@@ -101,7 +101,7 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
-    fetchData(parseInt(e.target.id))
+    fetchData(false, parseInt(e.target.id))
         .then(data => {
             const li = document.createElement('li');
             const img = document.createElement('img');
