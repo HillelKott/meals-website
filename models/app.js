@@ -21,7 +21,7 @@ const fetchData = (value) => {
 };
 
 const recipeInputSearch = () => {
-    fetchData(recipeInput.value)
+    fetchData(false, recipeInput.value)
 }
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
