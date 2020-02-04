@@ -65,7 +65,7 @@ const openClikcedRecepi = (e) => {
     likeImg.classList.remove('none');
     likeImg.setAttribute('id', `${a.meals[clikedItem].idMeal}`)
     ifarme.classList.remove('none');
-    ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
+    // ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 }
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
@@ -99,19 +99,19 @@ const checkIngredient = (obj) => {
 };
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
-var s;
+
 const addToFav = (e) => {
-    return fetchData(parseInt(e.target.id), false)
-        .then(data => s = data)
+    fetchData(parseInt(e.target.id), false)
         .then(() => {
             const li = document.createElement('li');
             const img = document.createElement('img');
-            li.textContent = a.mels[0].strMeal;
-            img.src = a.mels[0].strMealThumb;
+            li.textContent = a.meals[0].strMeal;
+            img.src = a.meals[0].strMealThumb;
+            favoritedItems.appendChild('li');
+            favoritedItems.appendChild('img');
+
+            favoritedItems.classList.remove('none');
         });
-    // favoritedItems
-    // const favoriteReipes = [];
-    // favoriteReipes.push(e.target.id);
 };
 
 likeImg.addEventListener('click', addToFav, false);
