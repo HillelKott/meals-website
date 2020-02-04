@@ -12,8 +12,8 @@ const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 
 let a;
-const log = async () => {
-    getRecepi(recipeInput.value)
+const fetchData = (value) => {
+    getRecepi(value)
         .then(data => a = data)
         .then(() => insertDataToLi(a))
         .then(() => console.log(a))
@@ -58,7 +58,7 @@ const openClikcedRecepi = (e) => {
     goToOunerA.classList.remove('none')
     goToOunerA.href = a.meals[clikedItem].strSource;
     likeImg.classList.remove('none');
-    likeImg.setAttribute('id', `add-to=${a.meals[clikedItem].idMeal}`)
+    likeImg.setAttribute('id', `${a.meals[clikedItem].idMeal}`)
     ifarme.classList.remove('none');
     ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 
@@ -100,7 +100,7 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
-    console.log(etarget.id);
+    console.log(e.target.id);
 
 }
 
