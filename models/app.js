@@ -101,15 +101,16 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const addToFav = (e) => {
-    fetchData(parseInt(e.target.id));
-
-    const li = document.createElement('li');
-    li.textContent = 
-
-
-    favoritedItems
-    const favoriteReipes = [];
-    favoriteReipes.push(e.target.id);
+    fetchData(parseInt(e.target.id))
+        .then(data => {
+            const li = document.createElement('li');
+            const img = document.createElement('img');
+            li.textContent = data.strMeal;
+            img.src = strMealThumb;
+        });
+    // favoritedItems
+    // const favoriteReipes = [];
+    // favoriteReipes.push(e.target.id);
 };
 
 likeImg.addEventListener('click', addToFav, false);
