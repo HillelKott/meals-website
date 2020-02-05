@@ -53,9 +53,9 @@ function insertDataToLi(data) {
 const openClikcedRecepi = (e, clikedItem = 0) => {
     // let clikedItem;
     if (e.target.id) {
-        clikedItem = e.target.id.slice(3, 4);
+        clikedItem = e.target.id.slice(3, 8);
     } else {
-        clikedItem = e.target.parentNode.id.slice(3, 4);
+        clikedItem = e.target.parentNode.id.slice(3, 8);
     };
 
     headerH2.textContent = a.meals[clikedItem].strMeal;
@@ -114,7 +114,7 @@ const addToFav = (e) => {
             img.src = a.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
             // favoritedItems.classList.remove('none');
-
+// id=5 letters
             favoritedItems.appendChild(li);
             li.appendChild(img);
 
