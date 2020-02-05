@@ -17,12 +17,12 @@ let a;
 const fetchData = (value1, value2) => {
     return getRecepi(value1, value2)
         .then(data => a = data)
-        .then(() => insertDataToLi(a))
         .then(() => console.log(a))
 };
 
 const recipeInputSearch = () => {
     fetchData(false, recipeInput.value)
+    .then(() => insertDataToLi(a))
 }
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
@@ -123,7 +123,15 @@ const addToFav = (e) => {
 likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
-    console.log(e.target.classList);
+    if (e.target.classList[1]) {
+        console.log(e.target.classList[1])
+        fetchData(parseInt(e.target.classList[1]), false)
+
+    } else {
+        console.log(e.target.parentNode.classList[1]);
+        fetchData(parseInt(e.target.parentNode.classList[1]), false)
+    }
+    ;
     
 }
 
