@@ -12,6 +12,7 @@ const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 
+
 let a;
 const fetchData = (value1, value2) => {
     return getRecepi(value1, value2)
@@ -108,18 +109,25 @@ const addToFav = (e) => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = a.meals[0].strMeal;
-            li.setAttribute('class', 'fav-title');
+            li.setAttribute('class', `fav-item ${a.meals[0].idMeal} `);
             img.src = a.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
             // favoritedItems.classList.remove('none');
 
             favoritedItems.appendChild(li);
-            favoritedItems.appendChild(img);
+            li.appendChild(img);
 
         });
 };
 
 likeImg.addEventListener('click', addToFav, false);
+
+const openFavItem = e => {
+    console.log(e.target.classList);
+    
+}
+
+favoritedItems.addEventListener('click', openFavItem, false);
 
 
 // 0527118855
