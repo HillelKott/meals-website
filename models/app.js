@@ -50,8 +50,8 @@ function insertDataToLi(data) {
     }
 };
 
-const openClikcedRecepi = (e) => {
-    let clikedItem;
+const openClikcedRecepi = (e, clikedItem) => {
+    // let clikedItem;
     if (e.target.id) {
         clikedItem = e.target.id.slice(3, 4);
     } else {
@@ -123,16 +123,17 @@ const addToFav = (e) => {
 likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
+    let reqString;
     if (e.target.classList[1]) {
-        console.log(e.target.classList[1])
-        fetchData(parseInt(e.target.classList[1]), false)
-
+        reqString = e.target.classList[1];
     } else {
-        console.log(e.target.parentNode.classList[1]);
-        fetchData(parseInt(e.target.parentNode.classList[1]), false)
-    }
-    ;
-    
+        reqString = e.target.parentNode.classList[1];
+    };
+    fetchData(parseInt(reqString), false)
+    .then(() => {
+        openClikcedRecepi(a, 0);
+    });
+
 }
 
 favoritedItems.addEventListener('click', openFavItem, false);
