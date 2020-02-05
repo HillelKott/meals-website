@@ -109,7 +109,7 @@ const addToFav = (e) => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = a.meals[0].strMeal;
-            li.setAttribute('class', `fav-item ${a.meals[0].idMeal} `);
+            li.setAttribute('id', `id-${a.meals[0].idMeal}fav-item`);
             img.src = a.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
             // favoritedItems.classList.remove('none');
@@ -131,7 +131,7 @@ const openFavItem = e => {
     };
     fetchData(parseInt(reqString), false)
     .then(() => {
-        openClikcedRecepi(a, 0);
+        openClikcedRecepi(e);
     });
 
 }
