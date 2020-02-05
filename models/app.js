@@ -50,7 +50,7 @@ function insertDataToLi(data) {
     }
 };
 
-const openClikcedRecepi = (e, clikedItem) => {
+const openClikcedRecepi = (e, clikedItem = 0) => {
     // let clikedItem;
     if (e.target.id) {
         clikedItem = e.target.id.slice(3, 4);
