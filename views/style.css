@@ -39,7 +39,7 @@
   display: none;
 }
 
-.favorite-container:hover > .favoritedItems {
+.favorite-container:hover * {
   display: block;
   z-index: 1;
 }
@@ -70,7 +70,6 @@ header {
 }
 .meals-cliked {
   top: 300px;
-  background-color: aqua;
 }
 /* 300 */
 
