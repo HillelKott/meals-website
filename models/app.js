@@ -110,6 +110,7 @@ const addToFav = (e) => {
             const img = document.createElement('img');
             li.textContent = a.meals[0].strMeal;
             li.setAttribute('id', `id-${a.meals[0].idMeal}fav-item`);
+            li.setAttribute('class', `fav-item ${a.meals[0].idMeal}`);
             img.src = a.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
             // favoritedItems.classList.remove('none');
