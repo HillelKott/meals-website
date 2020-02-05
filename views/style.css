@@ -45,7 +45,7 @@
 
 } */
 
-.topFavorite:hover .favoritedItems {
+.topFavorite:hover .favoritedItems  {
   display: block;
   background-color: aqua;
 }
