@@ -40,7 +40,7 @@
 }
 
 .favorite-container:hover * {
-  display: block;
+  display: table-column;
   z-index: 1;
 }
 
