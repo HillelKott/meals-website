@@ -64,7 +64,8 @@
 
 /* .topFavorite:hover .favoritedItems { */
   .topFavorite:hover > * {
-
+    min-width: 80px;
+    min-height: 300px;
   display: block;
 }
 
