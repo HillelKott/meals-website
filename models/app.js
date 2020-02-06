@@ -68,8 +68,9 @@ const openClikcedRecepi = (e) => {
     } else {
         clikedItem = 0;
     }
-    if (b) {
-        a = b
+    // mealsDiv.classList.add('none');
+    if (temp) {
+        a = temp
     }
     headerH2.textContent = a.meals[clikedItem].strMeal;
     headerImg.src = a.meals[clikedItem].strMealThumb;
@@ -80,9 +81,6 @@ const openClikcedRecepi = (e) => {
     ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 
     items.map((item) => item.classList.remove('none'));
-    if (temp) {
-        a = temp
-    }
 };
 
 const checkIngredient = (obj) => {
@@ -120,7 +118,7 @@ mealsUl.addEventListener('click', openClikcedRecepi, false);
 var b;
 const addToFav = (e) => {
     fetchData(parseInt(e.target.id), false)
-        .then(data => b = data)
+                               
         .then(() => console.log(b))
         .then(() => {
             const li = document.createElement('li');
