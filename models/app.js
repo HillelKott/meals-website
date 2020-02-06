@@ -117,8 +117,7 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 var b;
 const addToFav = (e) => {
-    fetchData(parseInt(e.target.id), false)
-                               
+    fetchData(parseInt(e.target.id), false)             
         .then(() => console.log(b))
         .then(() => {
             const li = document.createElement('li');
