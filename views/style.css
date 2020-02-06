@@ -32,6 +32,23 @@
   border: 5px solid rgba(41, 41, 41, 0.815);
 }
 
+.header-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.header-h2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+}
+.fav-item {
+  min-width: 100px;
+}
+
 .ingredient {
   padding: 20px;
 }
@@ -45,18 +62,12 @@
 
 } */
 
-.topFavorite:hover .favoritedItems  {
+.topFavorite:hover .favoritedItems {
   display: block;
-  background-color: aqua;
 }
 
-.topFavorite:hover {
-  display: block;
-  z-index: 1;
-}
-
-.favoritedItems:hover {
-  display: block;
+.favoritedItems {
+  padding: 0;
 }
 
 .like-img {

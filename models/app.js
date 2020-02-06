@@ -1,4 +1,5 @@
 import { getRecepi } from '../controllers/fetch.js'
+const main = document.querySelector('#main');
 const recipeInput = document.querySelector('.meal-input');
 const recipeButton = document.querySelector('.meal-button');
 const mealsDiv = document.querySelector('.meals');
@@ -11,24 +12,31 @@ const ifarme = document.querySelector('.ifarme');
 const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
+const ingredient = document.querySelector('.ingredient');
 
 
 let a;
+let temp;
 const fetchData = (value1, value2) => {
-    return getRecepi(value1, value2)
-        .then(data => a = data)
-        .then(() => console.log(a))
+    return getRecepi(value1, value2);
+    // .then(() => console.log(a))
 };
+
+var items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
 
 const recipeInputSearch = () => {
     fetchData(false, recipeInput.value)
-    .then(() => insertDataToLi(a))
-}
+        .then(data => a = data)
+        .then(() => console.log(a))
+        .then(() => insertDataToLi(a))
+
+    items.map((item) => item.classList.add('none'));
+    temp = null;
+};
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
 
-
-function insertDataToLi(data) {
+const insertDataToLi = (data) => {
 
     if (data.meals == null) {
         return mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
@@ -50,26 +58,31 @@ function insertDataToLi(data) {
     }
 };
 
-const openClikcedRecepi = (e, clikedItem = 0) => {
-    // let clikedItem;
-    if (e.target.id) {
-        clikedItem = e.target.id.slice(3, 8);
-    } else {
-        clikedItem = e.target.parentNode.id.slice(3, 8);
-    };
+const openClikcedRecepi = (e) => {
+    var clikedItem;
 
+    if (e.target.id && e.target.id < 999) {
+        clikedItem = parseInt(e.target.id.slice(3));
+    } else if (e.target.parentNode.id && e.target.parentNode.id.slice(3) < 999) {
+        clikedItem = e.target.parentNode.id.slice(3)
+    } else {
+        clikedItem = 0;
+    }
+    // mealsDiv.classList.add('none');
+    if (temp) {
+        a = temp
+    }
     headerH2.textContent = a.meals[clikedItem].strMeal;
     headerImg.src = a.meals[clikedItem].strMealThumb;
-    headerImg.classList.remove('none');
     checkIngredient(a.meals[clikedItem])
     intrudoctions.textContent = a.meals[clikedItem].strInstructions;
-    goToOunerA.classList.remove('none')
     goToOunerA.href = a.meals[clikedItem].strSource;
-    likeImg.classList.remove('none');
     likeImg.setAttribute('id', `${a.meals[clikedItem].idMeal}`)
-    ifarme.classList.remove('none');
     ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
-}
+
+    items.map((item) => item.classList.remove('none'));
+};
+
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
     var builderCounter = 0;
@@ -102,19 +115,19 @@ const checkIngredient = (obj) => {
 };
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
-
+var b;
 const addToFav = (e) => {
     fetchData(parseInt(e.target.id), false)
+        .then(data => b = data)
+        .then(() => console.log(b))
         .then(() => {
             const li = document.createElement('li');
             const img = document.createElement('img');
-            li.textContent = a.meals[0].strMeal;
-            li.setAttribute('id', `id-${a.meals[0].idMeal}fav-item`);
-            li.setAttribute('class', `fav-item ${a.meals[0].idMeal}`);
-            img.src = a.meals[0].strMealThumb;
+            li.textContent = b.meals[0].strMeal;
+            li.setAttribute('id', `id-${b.meals[0].idMeal}fav-item`);
+            li.setAttribute('class', `fav-item ${b.meals[0].idMeal}`);
+            img.src = b.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
-            // favoritedItems.classList.remove('none');
-// id=5 letters
             favoritedItems.appendChild(li);
             li.appendChild(img);
 
@@ -129,15 +142,15 @@ const openFavItem = e => {
         reqString = e.target.classList[1];
     } else {
         reqString = e.target.parentNode.classList[1];
-    };
-    fetchData(parseInt(reqString), false)
-    .then(() => {
-        openClikcedRecepi(e);
-    });
+    }
 
-}
+    fetchData(parseInt(reqString), false)
+        .then(data => temp = a)
+        .then(data => a = data)
+        .then(() => {
+            openClikcedRecepi(e);
+        });
+    // mealsDiv.classList.add('none');
+};
 
 favoritedItems.addEventListener('click', openFavItem, false);
-
-
-// 0527118855
