@@ -72,6 +72,9 @@ const openClikcedRecepi = (e) => {
     if (temp) {
         a = temp
     }
+    if (b) {
+        a = b
+    }
     headerH2.textContent = a.meals[clikedItem].strMeal;
     headerImg.src = a.meals[clikedItem].strMealThumb;
     checkIngredient(a.meals[clikedItem])
@@ -81,6 +84,7 @@ const openClikcedRecepi = (e) => {
     ifarme.src = `${a.meals[clikedItem].strYoutube.slice(0, 24)}embed/${a.meals[clikedItem].strYoutube.slice(32)}`;
 
     items.map((item) => item.classList.remove('none'));
+    a = temp;
 };
 
 const checkIngredient = (obj) => {
@@ -117,7 +121,8 @@ const checkIngredient = (obj) => {
 mealsUl.addEventListener('click', openClikcedRecepi, false);
 var b;
 const addToFav = (e) => {
-    fetchData(parseInt(e.target.id), false)             
+    fetchData(parseInt(e.target.id), false)
+        .then((data) => b = data)
         .then(() => console.log(b))
         .then(() => {
             const li = document.createElement('li');
@@ -144,8 +149,8 @@ const openFavItem = e => {
     }
 
     fetchData(parseInt(reqString), false)
-        .then(data => temp = a)
-        .then(data => a = data)
+        // .then(() => tea)
+        .then(data => b = data)
         .then(() => {
             openClikcedRecepi(e);
         });
