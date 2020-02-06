@@ -118,6 +118,8 @@ mealsUl.addEventListener('click', openClikcedRecepi, false);
 var b;
 const addToFav = (e) => {
     fetchData(parseInt(e.target.id), false)
+    .then(data => temp = data)
+
         .then(data => b = data)
         .then(() => console.log(b))
         .then(() => {
@@ -144,12 +146,12 @@ const openFavItem = e => {
         reqString = e.target.parentNode.classList[1];
     }
 
-    fetchData(parseInt(reqString), false)
-        .then(data => temp = a)
-        .then(data => a = data)
-        .then(() => {
+    // fetchData(parseInt(reqString), false)
+    //     .then(data => temp = a)
+    //     .then(data => a = data)
+    //     .then(() => {
             openClikcedRecepi(e);
-        });
+        // });
     // mealsDiv.classList.add('none');
 };
 
