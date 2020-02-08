@@ -124,7 +124,7 @@ const addToFav = (e) => {
         .then((data) => {
             temp = mealsInfo;
             mealsInfo = data;
-            favItemsId.push(mealsInfo);
+            favItemsId.push(mealsInfo.meals[0].idMeal);
         })
         .then(() => {
             // check for rapier
@@ -151,23 +151,18 @@ const openFavItem = e => {
     } else {
         reqString = e.target.parentNode.classList[1];
     }
-    temp = mealsInfo;
-    mealsInfo = favItemsId[favItemsId.length--];
-    openClikcedRecepi(e);
-    mealsInfo = temp;
 
-
-    // fetchData(parseInt(reqString), false)
-    //     .then((data) => {
-    //         temp = mealsInfo;
-    //         mealsInfo = data;
-    //     })
-    //     .then(() => {
-    //         openClikcedRecepi(e);
-    //     })
-    //     .then(() => {
-    //         mealsInfo = temp;
-    //     })
+    fetchData(parseInt(reqString), false)
+        .then((data) => {
+            temp = mealsInfo;
+            mealsInfo = data;
+        })
+        .then(() => {
+            openClikcedRecepi(e);
+        })
+        .then(() => {
+            mealsInfo = temp;
+        })
     // mealsDiv.classList.add('none');
 };
 
