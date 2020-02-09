@@ -1,3 +1,5 @@
+// this is jost a copy of app.js
+
 import { getRecepi } from '../controllers/fetch.js'
 const main = document.querySelector('#main');
 const recipeInput = document.querySelector('.meal-input');
