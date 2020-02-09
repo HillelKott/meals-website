@@ -22,12 +22,11 @@ let mealsInfo;
 const items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
 
 const recipeInputSearch = () => {
+    items.map((item) => item.classList.add('none'));
+
     fetchData(false, recipeInput.value)
         .then(data => mealsInfo = data)
-        .then((data) => insertDataToLi(data))
-    // .then((data) => console.log(data))
-
-    items.map((item) => item.classList.add('none'));
+        .then((data) => insertDataToLi(data))    
 };
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
@@ -88,7 +87,7 @@ const checkIngredient = (obj) => {
 
         var li;
         let span;
-        // not good try to replace
+
         const spanBuilder = (createLi, text) => {
             if (createLi) {
                 li = document.createElement('li');
@@ -110,7 +109,7 @@ const checkIngredient = (obj) => {
     };
 };
 let temp;
-co favItemsId = [];
+const favItemsId = [];
 
 // temp is holding the main request data 
 const addToFav = (e) => {
@@ -127,7 +126,6 @@ const addToFav = (e) => {
             favItemsId.push(mealsInfo);
         })
         .then(() => {
-            // check for rapier
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = mealsInfo.meals[0].strMeal;
