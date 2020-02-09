@@ -124,7 +124,7 @@ const addToFav = (e) => {
         .then((data) => {
             temp = mealsInfo;
             mealsInfo = data;
-            favItemsId.push(mealsInfo.meals[0].idMeal);
+            favItemsId.push(mealsInfo);
         })
         .then(() => {
             // check for rapier
@@ -141,7 +141,6 @@ const addToFav = (e) => {
         .then(() => mealsInfo = temp);
 };
 
-
 likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
@@ -151,19 +150,15 @@ const openFavItem = e => {
     } else {
         reqString = e.target.parentNode.classList[1];
     }
+    temp = mealsInfo;
+    favItemsId.map(item => {
+        if (item.meals[0].idMeal == reqString) {
+            mealsInfo = item
+        };
+    });
 
-    fetchData(parseInt(reqString), false)
-        .then((data) => {
-            temp = mealsInfo;
-            mealsInfo = data;
-        })
-        .then(() => {
-            openClikcedRecepi(e);
-        })
-        .then(() => {
-            mealsInfo = temp;
-        })
-    // mealsDiv.classList.add('none');
+    openClikcedRecepi(e);
+    mealsInfo = temp;
 };
 
 favoritedItems.addEventListener('click', openFavItem, false);

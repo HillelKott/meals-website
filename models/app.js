@@ -18,8 +18,8 @@ const fetchData = (id, string) => {
     return getRecepi(id, string);
 };
 
-var mealsInfo;
-var items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
+let mealsInfo;
+const items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
 
 const recipeInputSearch = () => {
     fetchData(false, recipeInput.value)
@@ -81,13 +81,13 @@ mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const checkIngredient = (obj) => {
     ingUl.textContent = '';
-    var builderCounter = 0;
+    let builderCounter = 0;
     for (const key in obj) {
         let inRes = /strIngredient/.test(key);
         let meRes = /strMeasure/.test(key);
 
         var li;
-        var span;
+        let span;
         // not good try to replace
         const spanBuilder = (createLi, text) => {
             if (createLi) {
@@ -109,8 +109,8 @@ const checkIngredient = (obj) => {
         }
     };
 };
-var temp;
-var favItemsId = [];
+let temp;
+co favItemsId = [];
 
 // temp is holding the main request data 
 const addToFav = (e) => {
