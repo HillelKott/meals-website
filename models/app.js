@@ -141,7 +141,6 @@ const addToFav = (e) => {
         .then(() => mealsInfo = temp);
 };
 
-
 likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
@@ -152,23 +151,14 @@ const openFavItem = e => {
         reqString = e.target.parentNode.classList[1];
     }
     temp = mealsInfo;
-    mealsInfo = favItemsId[favItemsId.length-1];
+    favItemsId.map(item => {
+        if (item.meals[0].idMeal == reqString) {
+            mealsInfo = item
+        };
+    });
+
     openClikcedRecepi(e);
     mealsInfo = temp;
-
-
-    // fetchData(parseInt(reqString), false)
-    //     .then((data) => {
-    //         temp = mealsInfo;
-    //         mealsInfo = data;
-    //     })
-    //     .then(() => {
-    //         openClikcedRecepi(e);
-    //     })
-    //     .then(() => {
-    //         mealsInfo = temp;
-    //     })
-    // mealsDiv.classList.add('none');
 };
 
 favoritedItems.addEventListener('click', openFavItem, false);
