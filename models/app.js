@@ -152,7 +152,7 @@ const openFavItem = e => {
         reqString = e.target.parentNode.classList[1];
     }
     temp = mealsInfo;
-    mealsInfo = favItemsId[favItemsId.length--];
+    mealsInfo = favItemsId[favItemsId.length-1];
     openClikcedRecepi(e);
     mealsInfo = temp;
 
