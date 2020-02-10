@@ -132,10 +132,12 @@ header {
 
 .random-recipe-p {
   text-align: center;
+  pointer-events: none;
 }
 
 .random-recipe-img {
   width: 250px;
+  pointer-events: none;
 }
 
 .random-recipes-header {

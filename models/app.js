@@ -188,9 +188,10 @@ const createRandomRecipes = (() => {
 
 
 const openFromRandom = e => {
-    console.log(e);
+    console.log(e.target.dataset.recipeId);
 
-    // openClikcedRecepi(e.target);
+
+    openClikcedRecepi(e.target.dataset.recipeId);
 }
 
 randomRecipesContainer.addEventListener('click', openFromRandom, false);
