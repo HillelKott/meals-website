@@ -14,13 +14,10 @@ const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
-// const randomRecipes = document.querySelector('.random-recipes');
 const randomRecipesContainer = document.querySelector('.random-recipes-container');
 const innerRandomRecipe = document.querySelectorAll('.inner-random-recipe');
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
-const randomRecipeDiv = document.querySelectorAll('.random-recipe-div');
-
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
@@ -65,7 +62,7 @@ const insertDataToLi = (data) => {
 const openClikcedRecepi = (e) => {
     let clikedItem;
 
-    if (e.target.id && e.target.id < 999) {
+    if (e.target.id && e.target.id.slice(3) < 999) {
         clikedItem = parseInt(e.target.id.slice(3));
     } else if (e.target.parentNode.id && e.target.parentNode.id.slice(3) < 999) {
         clikedItem = e.target.parentNode.id.slice(3);
