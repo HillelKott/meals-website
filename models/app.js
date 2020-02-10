@@ -163,9 +163,14 @@ const openFavItem = e => {
 
 favoritedItems.addEventListener('click', openFavItem, false);
 
+// this function shuld be in the top.
 const createRandomRecipes = () => {
     let dataHolder;
-    getRandomRecepi().then(data => insetRandomRec)
+    getRandomRecepi()
+    .then(data => insetRandomRecipes(data));
+
+    const insetRandomRecipes = data => {
+        randomRecipes.
+    }
     
-    // randomRecipes.
 }
