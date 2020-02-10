@@ -125,9 +125,9 @@ header {
 .inner-random-recipe {
   display: inline-block;
   width: 250px;
-
   border: 2.5px solid black;
   margin: 15px;
+  box-shadow: 20px 20px 35px rgb(109, 109, 109);
 }
 
 .random-recipe-p {
