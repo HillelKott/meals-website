@@ -73,8 +73,6 @@ const openClikcedRecepi = (e) => {
     checkIngredient(mealsInfo.meals[clikedItem]);
     intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
     goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
-    //  fix here
-    // likeImg.setAttribute('id', `${mealsInfo.meals[clikedItem].idMeal}`);
     likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
     ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
 
@@ -177,8 +175,6 @@ const createRandomRecipes = (() => {
 })();
 
 const openFromRandom = e => {
-    console.log(e.target.dataset.recipeId);
-
     fetchData(parseInt(e.target.dataset.recipeId), false)
     .then(data => {
         temp = mealsInfo;
