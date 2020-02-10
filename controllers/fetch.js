@@ -1,15 +1,4 @@
 export const getRecepi = (id, recipe) => {
-
-    switch (id) {
-        case value:
-            
-            break;
-    
-        default:
-            break;
-    }
-
-
     if (id) {
         return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
             .then(data => data.json())
@@ -20,3 +9,9 @@ export const getRecepi = (id, recipe) => {
             .catch(e => console.log(e))
     }
 };
+
+export const getRandomRecepi = () => {
+    return fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(data => data.json())
+    .catch(e => console.log(e))
+}

@@ -164,7 +164,8 @@ const openFavItem = e => {
 favoritedItems.addEventListener('click', openFavItem, false);
 
 const createRandomRecipes = () => {
-    
+    let dataHolder;
+    getRandomRecepi().then(data => insetRandomRec)
     
     // randomRecipes.
 }
