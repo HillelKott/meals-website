@@ -16,7 +16,7 @@ const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
 // const randomRecipes = document.querySelector('.random-recipes');
 const randomRecipesContainer = document.querySelector('.random-recipes-container');
-const innerRandomRecipe = document.querySelector('.inner-random-recipe')
+const innerRandomRecipe = document.querySelectorAll('.inner-random-recipe');
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
 const randomRecipeDiv = document.querySelectorAll('.random-recipe-div');
@@ -179,7 +179,7 @@ const createRandomRecipes = (() => {
     }
 
     const insetRandomRecipes = (data, i) => {
-        innerRandomRecipe.dataset.recipeId = data.meals[0].idMeal;
+        innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
     }
