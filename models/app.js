@@ -45,7 +45,8 @@ const insertDataToLi = (data) => {
     mealsDiv.classList.remove('none');
     for (let i = 0; i < data.meals.length; i++) {
         const li = document.createElement('li');
-        li.setAttribute('id', `li-${i}`);
+        li.dataset.liId = i;
+        // li.setAttribute('id', `li-${i}`);
         const span = document.createElement('span')
         span.textContent = data.meals[i].strMeal;
         const img = document.createElement('img');
@@ -62,8 +63,11 @@ const insertDataToLi = (data) => {
 const openClikcedRecepi = (e) => {
     let clikedItem;    
 
-    if (e.target.id && e.target.id.slice(3) < 999) {
-        clikedItem = parseInt(e.target.id.slice(3));
+    if (e.dataset.liId && e.dataset.liId < 999) {
+        clikedItem = parseInt(e.target.id);
+
+    // if (e.target.id && e.target.id.slice(3) < 999) {
+    //     clikedItem = parseInt(e.target.id.slice(3));
     } else {
         clikedItem = 0
     };
