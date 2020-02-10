@@ -13,6 +13,8 @@ const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
+const randomRecipes = document.querySelector('.random-recipes');
+
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
@@ -161,4 +163,8 @@ const openFavItem = e => {
 
 favoritedItems.addEventListener('click', openFavItem, false);
 
-
+const createRandomRecipes = () => {
+    
+    
+    // randomRecipes.
+}
