@@ -1,4 +1,5 @@
 import { getRecepi } from '../controllers/fetch.js'
+import { getRandomRecepi } from '../controllers/fetch.js'
 const main = document.querySelector('#main');
 const recipeInput = document.querySelector('.meal-input');
 const recipeButton = document.querySelector('.meal-button');
@@ -13,8 +14,11 @@ const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
-const randomRecipes = document.querySelector('.random-recipes');
-
+// const randomRecipes = document.querySelector('.random-recipes');
+const randomRecipeP = document.querySelectorAll('.random-recipe-p');
+const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
+const randomRecipeDiv = document.querySelectorAll('.random-recipe-div');
+ 
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
@@ -166,11 +170,15 @@ favoritedItems.addEventListener('click', openFavItem, false);
 // this function shuld be in the top.
 const createRandomRecipes = () => {
     let dataHolder;
-    getRandomRecepi()
-    .then(data => insetRandomRecipes(data));
+    for (let i = 0; i < 6; i++) {
+         getRandomRecepi()
+        .then(data => insetRandomRecipes(data, i));
+    }
+   
 
-    const insetRandomRecipes = data => {
-        randomRecipes.
+    const insetRandomRecipes = (data, i) => {
+        randomRecipeP[i].textContent = data.meals[0].strMeal;
+
     }
     
 }
