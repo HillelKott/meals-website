@@ -9,7 +9,7 @@ body {
 .search {
   text-align: center;
   margin-top: 45px;
-  margin-bottom: 215px;
+  margin-bottom: 175px;
 }
 
 .topFavorite {
@@ -136,4 +136,8 @@ header {
 
 .random-recipe-img {
   width: 250px;
+}
+
+.random-recipes-header {
+  text-align: center;
 }

@@ -15,6 +15,8 @@ const likeImg = document.querySelector('.like-img');
 const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
 // const randomRecipes = document.querySelector('.random-recipes');
+const randomRecipesContainer = document.querySelector('.random-recipes-container');
+const innerRandomRecipe = document.querySelector('.inner-random-recipe')''
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
 const randomRecipeDiv = document.querySelectorAll('.random-recipe-div');
@@ -168,7 +170,7 @@ const openFavItem = e => {
 favoritedItems.addEventListener('click', openFavItem, false);
 
 // this function shuld be in the top.
-const createRandomRecipes = () => {
+const createRandomRecipes = (() => {
     let dataHolder;
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
@@ -176,13 +178,13 @@ const createRandomRecipes = () => {
         .then(data => console.log(dataHolder))
         .then(() => insetRandomRecipes(dataHolder, i));
     }
-   
 
     const insetRandomRecipes = (data, i) => {
+        innerRandomRecipe.dataset.recipe_id = data.meals[0].strMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
     }
-    
-}
+})()
 
-createRandomRecipes()
+
+randomRecipesContainer.addEventListener('click', )
