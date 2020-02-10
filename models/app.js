@@ -45,6 +45,7 @@ const insertDataToLi = (data) => {
     mealsDiv.classList.remove('none');
     for (let i = 0; i < data.meals.length; i++) {
         const li = document.createElement('li');
+        // li.dataset.li_recipe_id = 
         li.setAttribute('id', `li-${i}`);
         const span = document.createElement('span')
         span.textContent = data.meals[i].strMeal;
@@ -60,12 +61,10 @@ const insertDataToLi = (data) => {
 
 
 const openClikcedRecepi = (e) => {
-    let clikedItem;
+    let clikedItem;    
 
     if (e.target.id && e.target.id.slice(3) < 999) {
         clikedItem = parseInt(e.target.id.slice(3));
-    } else if (e.target.parentNode.id && e.target.parentNode.id.slice(3) < 999) {
-        clikedItem = e.target.parentNode.id.slice(3);
     } else {
         clikedItem = 0
     };
@@ -75,7 +74,7 @@ const openClikcedRecepi = (e) => {
     checkIngredient(mealsInfo.meals[clikedItem]);
     intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
     goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
-    likeImg.setAttribute('id', `${mealsInfo.meals[clikedItem].idMeal}`)
+    likeImg.setAttribute('id', `${mealsInfo.meals[clikedItem].idMeal}`);
     ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
 
     items.map((item) => item.classList.remove('none'));
@@ -134,7 +133,8 @@ const addToFav = (e) => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = mealsInfo.meals[0].strMeal;
-            li.setAttribute('id', `id-${mealsInfo.meals[0].idMeal}fav-item`);
+            // li.setAttribute('id', `id-${mealsInfo.meals[0].idMeal}fav-item`);
+            li.dataset.fav_item_id = mealsInfo.meals[0].idMeal;
             li.setAttribute('class', `fav-item ${mealsInfo.meals[0].idMeal}`);
             img.src = mealsInfo.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
@@ -148,6 +148,7 @@ likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
     let reqString;
+    ////////////
     if (e.target.classList[1]) {
         reqString = e.target.classList[1];
     } else {
