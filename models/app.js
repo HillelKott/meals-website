@@ -16,11 +16,11 @@ const favoritedItems = document.querySelector('.favoritedItems');
 const ingredient = document.querySelector('.ingredient');
 // const randomRecipes = document.querySelector('.random-recipes');
 const randomRecipesContainer = document.querySelector('.random-recipes-container');
-const innerRandomRecipe = document.querySelector('.inner-random-recipe')''
+const innerRandomRecipe = document.querySelector('.inner-random-recipe')
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
 const randomRecipeDiv = document.querySelectorAll('.random-recipe-div');
- 
+
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
@@ -34,7 +34,7 @@ const recipeInputSearch = () => {
 
     fetchData(false, recipeInput.value)
         .then(data => mealsInfo = data)
-        .then((data) => insertDataToLi(data))    
+        .then((data) => insertDataToLi(data))
 };
 
 recipeButton.addEventListener("click", recipeInputSearch, false);
@@ -174,17 +174,23 @@ const createRandomRecipes = (() => {
     let dataHolder;
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
-        .then(data => dataHolder = data)
-        .then(data => console.log(dataHolder))
-        .then(() => insetRandomRecipes(dataHolder, i));
+            .then(data => dataHolder = data)
+            .then(() => insetRandomRecipes(dataHolder, i));
     }
 
     const insetRandomRecipes = (data, i) => {
-        innerRandomRecipe.dataset.recipe_id = data.meals[0].strMeal;
+        innerRandomRecipe.dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
     }
 })()
 
 
-randomRecipesContainer.addEventListener('click', )
+
+const openFromRandom = e => {
+    console.log(e);
+
+    // openClikcedRecepi(e.target);
+}
+
+randomRecipesContainer.addEventListener('click', openFromRandom, false);
