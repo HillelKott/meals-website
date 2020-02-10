@@ -74,7 +74,8 @@ const openClikcedRecepi = (e) => {
     intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
     goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
     //  fix here
-    likeImg.setAttribute('id', `${mealsInfo.meals[clikedItem].idMeal}`);
+    // likeImg.setAttribute('id', `${mealsInfo.meals[clikedItem].idMeal}`);
+    likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
     ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
 
     items.map((item) => item.classList.remove('none'));
@@ -118,12 +119,12 @@ const favItemsId = [];
 // temp is holding the main request data 
 const addToFav = (e) => {
     for (let i = 0; i < favItemsId.length; i++) {
-        if (favItemsId[i] == e.target.id) {
+        if (favItemsId[i].meals[0].idMeal == e.target.dataset.likeImgId) {
             return
         }
     };
 
-    fetchData(parseInt(e.target.id), false)
+    fetchData(parseInt(e.target.dataset.likeImgId), false)
         .then((data) => {
             temp = mealsInfo;
             mealsInfo = data;
@@ -133,8 +134,6 @@ const addToFav = (e) => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             li.textContent = mealsInfo.meals[0].strMeal;
-            // li.setAttribute('id', `id-${mealsInfo.meals[0].idMeal}fav-item`);
-            // li.dataset.fav_item_id = mealsInfo.meals[0].idMeal;
             li.setAttribute('class', `fav-item ${mealsInfo.meals[0].idMeal}`);
             img.src = mealsInfo.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
@@ -168,16 +167,14 @@ const createRandomRecipes = (() => {
         getRandomRecepi()
             .then(data => dataHolder = data)
             .then(() => insetRandomRecipes(dataHolder, i));
-    }
+    };
 
     const insetRandomRecipes = (data, i) => {
         innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
-    }
-})()
-
-
+    };
+})();
 
 const openFromRandom = e => {
     console.log(e.target.dataset.recipeId);
@@ -191,3 +188,4 @@ const openFromRandom = e => {
 };
 
 randomRecipesContainer.addEventListener('click', openFromRandom, false);
+
