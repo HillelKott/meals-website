@@ -98,10 +98,30 @@ header {
 .meals-cliked {
   top: 300px;
 }
-/* 300 */
 
 .li-img {
   height: 250px;
   width: 250px;
   border-radius: 50%;
+}
+
+.random-recipes-container{
+  height: 450px;
+  white-space: nowrap; 
+}
+
+.random-recipes-header {
+  font-size: 25px;
+}
+
+.inner-random-recipe {
+  display: inline-block;
+}
+
+.random-recipe-p {
+  text-align: center;
+}
+
+.random-recipe-img {
+  width: 250px;
 }

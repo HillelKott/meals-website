@@ -170,12 +170,12 @@ favoritedItems.addEventListener('click', openFavItem, false);
 // this function shuld be in the top.
 const createRandomRecipes = () => {
     let dataHolder;
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 6; i++) {
         getRandomRecepi()
         .then(data => dataHolder = data)
         .then(data => console.log(dataHolder))
         .then(() => insetRandomRecipes(dataHolder, i));
-    // }
+    }
    
 
     const insetRandomRecipes = (data, i) => {
