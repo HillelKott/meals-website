@@ -9,6 +9,7 @@ body {
 .search {
   text-align: center;
   margin-top: 45px;
+  margin-bottom: 215px;
 }
 
 .topFavorite {
@@ -109,12 +110,12 @@ header {
   border-radius: 50%;
 }
 
-.random-recipes-container{
+.random-recipes-container {
   display: contents;
   position: relative;
   bottom: -150px;
   height: 450px;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .random-recipes-header {
@@ -123,6 +124,10 @@ header {
 
 .inner-random-recipe {
   display: inline-block;
+  width: 250px;
+
+  border: 2.5px solid black;
+  margin: 15px;
 }
 
 .random-recipe-p {
