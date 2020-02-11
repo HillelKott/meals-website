@@ -76,12 +76,9 @@ const insertDataToLi = (data) => {
 
 
 const openClikcedRecepi = (e) => {
-    let clikedItem = '';    
-console.log(e);
-// if (e.dataset && e.dataset.liId && e.dataset.liId < 999) {
-
+    let clikedItem;    
     if (e.target.dataset.liId && e.target.dataset.liId < 999) {
-        clikedItem = parseInt(e.target.id);
+        clikedItem = parseInt(e.target.dataset.liId);
     } else {
         clikedItem = 0
     };
