@@ -112,6 +112,7 @@ header {
 }
 
 .random-recipes-container {
+  overflow-wrap: break-word;
   display: contents;
   position: relative;
   bottom: -150px;

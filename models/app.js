@@ -23,6 +23,22 @@ const fetchData = (id, string) => {
     return getRecepi(id, string);
 };
 
+const createRandomRecipes = (() => {
+    let dataHolder;
+    for (let i = 0; i < 6; i++) {
+        getRandomRecepi()
+            .then(data => dataHolder = data)
+            .then(() => insetRandomRecipes(dataHolder, i));
+    };
+
+    const insetRandomRecipes = (data, i) => {
+        // innerRandomRecipe[i].dataset.liId = ' ';
+        innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
+        randomRecipeP[i].textContent = data.meals[0].strMeal;
+        randomRecipeImg[i].src = data.meals[0].strMealThumb;
+    };
+})();
+
 let mealsInfo;
 const items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
 
@@ -60,10 +76,11 @@ const insertDataToLi = (data) => {
 
 
 const openClikcedRecepi = (e) => {
-    let clikedItem;    
+    let clikedItem = '';    
 console.log(e);
+// if (e.dataset && e.dataset.liId && e.dataset.liId < 999) {
 
-    if (e.dataset && e.dataset.liId && e.dataset.liId < 999) {
+    if (e.target.dataset.liId && e.target.dataset.liId < 999) {
         clikedItem = parseInt(e.target.id);
     } else {
         clikedItem = 0
@@ -158,23 +175,6 @@ const openFavItem = e => {
 };
 
 favoritedItems.addEventListener('click', openFavItem, false);
-
-// this function shuld be in the top.
-const createRandomRecipes = (() => {
-    let dataHolder;
-    for (let i = 0; i < 6; i++) {
-        getRandomRecepi()
-            .then(data => dataHolder = data)
-            .then(() => insetRandomRecipes(dataHolder, i));
-    };
-
-    const insetRandomRecipes = (data, i) => {
-        innerRandomRecipe[i].dataset.liId = ' ';
-        innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
-        randomRecipeP[i].textContent = data.meals[0].strMeal;
-        randomRecipeImg[i].src = data.meals[0].strMealThumb;
-    };
-})();
 
 const openFromRandom = e => {
     fetchData(parseInt(e.target.dataset.recipeId), false)
