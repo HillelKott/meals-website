@@ -46,7 +46,6 @@ const insertDataToLi = (data) => {
     for (let i = 0; i < data.meals.length; i++) {
         const li = document.createElement('li');
         li.dataset.liId = i;
-        // li.setAttribute('id', `li-${i}`);
         const span = document.createElement('span')
         span.textContent = data.meals[i].strMeal;
         const img = document.createElement('img');
@@ -62,12 +61,10 @@ const insertDataToLi = (data) => {
 
 const openClikcedRecepi = (e) => {
     let clikedItem;    
+console.log(e);
 
-    if (e.dataset.liId && e.dataset.liId < 999) {
+    if (e.dataset && e.dataset.liId && e.dataset.liId < 999) {
         clikedItem = parseInt(e.target.id);
-
-    // if (e.target.id && e.target.id.slice(3) < 999) {
-    //     clikedItem = parseInt(e.target.id.slice(3));
     } else {
         clikedItem = 0
     };
@@ -172,6 +169,7 @@ const createRandomRecipes = (() => {
     };
 
     const insetRandomRecipes = (data, i) => {
+        innerRandomRecipe[i].dataset.liId = ' ';
         innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
