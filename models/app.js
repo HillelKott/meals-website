@@ -184,3 +184,15 @@ const openFromRandom = e => {
 
 randomRecipesContainer.addEventListener('click', openFromRandom, false);
 
+
+
+// todo change order of query
+// ! alert fix bugs
+// ? check if all ok 
+// simple comment
+
+
+
+
+
+
