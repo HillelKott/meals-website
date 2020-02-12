@@ -28,10 +28,10 @@ const createRandomRecipes = (() => {
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
             .then(data => dataHolder = data)
-            .then(() => insetRandomRecipes(dataHolder, i));
+            .then(() => insertRandomRecipes(dataHolder, i));
     };
 
-    const insetRandomRecipes = (data, i) => {
+    const insertRandomRecipes = (data, i) => {
         // innerRandomRecipe[i].dataset.liId = ' ';
         innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;

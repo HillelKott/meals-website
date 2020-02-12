@@ -107,7 +107,7 @@ header {
 .li-img {
   height: 250px;
   width: 250px;
-  border-radius: 50%;
+  border-radius: 10%;
   pointer-events: none;
 }
 
