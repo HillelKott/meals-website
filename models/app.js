@@ -8,7 +8,7 @@ const mealsUl = document.querySelector('.meals--ul');
 const headerH2 = document.querySelector('.header-h2');
 const headerImg = document.querySelector('.header-img');
 const intrudoctions = document.querySelector('.intrudoctions');
-const ingUl = document.querySelector('.ing-ul');
+const ingUl = document.querySelector('.ing-ul'); // DOMObjs.list_recipues
 const ifarme = document.querySelector('.ifarme');
 const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
@@ -18,6 +18,11 @@ const randomRecipesContainer = document.querySelector('.random-recipes-container
 const innerRandomRecipe = document.querySelectorAll('.inner-random-recipe');
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
+
+
+const DOMObjs = {
+    'list_recipues': '.ing-ul'
+}
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
