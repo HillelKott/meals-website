@@ -21,7 +21,7 @@ const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
 
 
 const DOMObjs = {
-    'list_recipues': '.ing-ul'
+    'list_recipues': '.ig-ul'
 }
 
 const fetchData = (id, string) => {
@@ -32,8 +32,8 @@ const createRandomRecipes = (() => {
     let dataHolder;
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
-            .then(data => dataHolder = data)
-            .then(() => insertRandomRecipes(dataHolder, i));
+            // .then(data => dataHolder = data)
+            .then((dataHolder) => insertRandomRecipes(dataHolder, i));
     };
 
     const insertRandomRecipes = (data, i) => {
@@ -59,7 +59,7 @@ recipeButton.addEventListener("click", recipeInputSearch, false);
 
 const insertDataToLi = (data) => {
     if (data.meals == null) {
-        return mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
+        return mealsUl.textContent = 'Sorri we coldnt find a recepi for this';
     };
 
     mealsUl.innerHTML = null;
@@ -81,7 +81,7 @@ const insertDataToLi = (data) => {
 
 
 const openClikcedRecepi = (e) => {
-    let clikedItem;    
+    let clikedItem;
     if (e.target.dataset.liId && e.target.dataset.liId < 999) {
         clikedItem = parseInt(e.target.dataset.liId);
     } else {
@@ -180,11 +180,11 @@ favoritedItems.addEventListener('click', openFavItem, false);
 
 const openFromRandom = e => {
     fetchData(parseInt(e.target.dataset.recipeId), false)
-    .then(data => {
-        temp = mealsInfo;
-        mealsInfo = data;
-        openClikcedRecepi(e)
-    }).then(() => mealsInfo = temp );
+        .then(data => {
+            temp = mealsInfo;
+            mealsInfo = data;
+            openClikcedRecepi(e)
+        }).then(() => mealsInfo = temp);
 };
 
 randomRecipesContainer.addEventListener('click', openFromRandom, false);
