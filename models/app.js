@@ -38,7 +38,7 @@ const createRandomRecipes = (() => {
 })();
 
 let mealsInfo;
-const items = [headerH2, headerImg, goToOunerA, mealsDiv, likeImg, ifarme, ingredient, intrudoctions];
+const items = [headerH2, headerImg, mealsDiv, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
 
 const recipeInputSearch = () => {
     items.map((item) => item.classList.add('none'));
@@ -51,6 +51,7 @@ const recipeInputSearch = () => {
 recipeButton.addEventListener("click", recipeInputSearch, false);
 
 const insertDataToLi = (data) => {
+    mealsDiv.classList.remove('none');
     mealsUl.scrollIntoView({ behavior: "smooth" });
 
     if (data.meals == null) {

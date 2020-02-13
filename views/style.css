@@ -92,6 +92,7 @@
 
 .li-img {
   width: 18rem;
+  pointer-events: none;
 }
 
 .random-recipes-container {
