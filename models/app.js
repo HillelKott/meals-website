@@ -8,7 +8,7 @@ const mealsUl = document.querySelector('.meals--ul');
 const headerH2 = document.querySelector('.header-h2');
 const headerImg = document.querySelector('.header-img');
 const intrudoctions = document.querySelector('.intrudoctions');
-const ingUl = document.querySelector('.ing-ul'); // DOMObjs.list_recipues
+const ingUl = document.querySelector('.ing-ul');
 const ifarme = document.querySelector('.ifarme');
 const goToOunerA = document.querySelector('.go-to-ouner');
 const likeImg = document.querySelector('.like-img');
@@ -19,25 +19,18 @@ const innerRandomRecipe = document.querySelectorAll('.inner-random-recipe');
 const randomRecipeP = document.querySelectorAll('.random-recipe-p');
 const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
 
-
-const DOMObjs = {
-    'list_recipues': '.ig-ul'
-}
-
 const fetchData = (id, string) => {
     return getRecepi(id, string);
 };
 
 const createRandomRecipes = (() => {
-    let dataHolder;
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
-            // .then(data => dataHolder = data)
-            .then((dataHolder) => insertRandomRecipes(dataHolder, i));
+            .then((data) => insetRandomRecipes(data, i));
+
     };
 
-    const insertRandomRecipes = (data, i) => {
-        // innerRandomRecipe[i].dataset.liId = ' ';
+    const insetRandomRecipes = (data, i) => {
         innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
         randomRecipeP[i].textContent = data.meals[0].strMeal;
         randomRecipeImg[i].src = data.meals[0].strMealThumb;
@@ -45,7 +38,7 @@ const createRandomRecipes = (() => {
 })();
 
 let mealsInfo;
-const items = [headerH2, headerImg, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
+const items = [headerH2, headerImg, goToOunerA, mealsDiv, likeImg, ifarme, ingredient, intrudoctions];
 
 const recipeInputSearch = () => {
     items.map((item) => item.classList.add('none'));
@@ -58,27 +51,30 @@ const recipeInputSearch = () => {
 recipeButton.addEventListener("click", recipeInputSearch, false);
 
 const insertDataToLi = (data) => {
+    mealsUl.scrollIntoView({ behavior: "smooth" });
+
     if (data.meals == null) {
-        return mealsUl.textContent = 'Sorri we coldnt find a recepi for this';
+        return mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
     };
 
     mealsUl.innerHTML = null;
     mealsDiv.classList.remove('none');
-    for (let i = 0; i < data.meals.length; i++) {
-        const li = document.createElement('li');
+    const len = data.meals.length;
+    for (let i = 0; i < len; i++) {
+        const li = document.createElement('div');
+        li.setAttribute('class', 'mealsUlInDiv');
         li.dataset.liId = i;
         const span = document.createElement('span')
         span.textContent = data.meals[i].strMeal;
         const img = document.createElement('img');
         img.setAttribute('class', 'li-img')
         img.src = data.meals[i].strMealThumb;
-        li.appendChild(span);
         li.appendChild(img);
+        li.appendChild(span);
 
         mealsUl.appendChild(li);
     };
 };
-
 
 const openClikcedRecepi = (e) => {
     let clikedItem;
@@ -89,6 +85,7 @@ const openClikcedRecepi = (e) => {
     };
 
     headerH2.textContent = mealsInfo.meals[clikedItem].strMeal;
+    headerImg.style.display = 'block'
     headerImg.src = mealsInfo.meals[clikedItem].strMealThumb;
     checkIngredient(mealsInfo.meals[clikedItem]);
     intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
@@ -97,6 +94,8 @@ const openClikcedRecepi = (e) => {
     ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
 
     items.map((item) => item.classList.remove('none'));
+
+    headerImg.scrollIntoView({ behavior: "smooth" });
 };
 
 mealsUl.addEventListener('click', openClikcedRecepi, false);
@@ -136,7 +135,8 @@ const favItemsId = [];
 
 // temp is holding the main request data 
 const addToFav = (e) => {
-    for (let i = 0; i < favItemsId.length; i++) {
+    const len = favItemsId.length;
+    for (let i = 0; i < len; i++) {
         if (favItemsId[i].meals[0].idMeal == e.target.dataset.likeImgId) {
             return
         }
@@ -157,6 +157,8 @@ const addToFav = (e) => {
             img.setAttribute('class', 'fav-img');
             favoritedItems.appendChild(li);
             li.appendChild(img);
+            console.log('i like this item');
+
         })
         .then(() => mealsInfo = temp);
 };
@@ -188,16 +190,4 @@ const openFromRandom = e => {
 };
 
 randomRecipesContainer.addEventListener('click', openFromRandom, false);
-
-
-
-// todo change order of query
-// ! alert fix bugs
-// ? check if all ok 
-// simple comment
-
-
-
-
-
 
