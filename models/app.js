@@ -1,65 +1,58 @@
+
 import { getRecepi } from '../controllers/fetch.js'
 import { getRandomRecepi } from '../controllers/fetch.js'
-const main = document.querySelector('#main');
-const recipeInput = document.querySelector('.meal-input');
-const recipeButton = document.querySelector('.meal-button');
-const mealsDiv = document.querySelector('.meals');
-const mealsUl = document.querySelector('.meals--ul');
-const headerH2 = document.querySelector('.header-h2');
-const headerImg = document.querySelector('.header-img');
-const intrudoctions = document.querySelector('.intrudoctions');
-const ingUl = document.querySelector('.ing-ul');
-const ifarme = document.querySelector('.ifarme');
-const goToOunerA = document.querySelector('.go-to-ouner');
-const likeImg = document.querySelector('.like-img');
-const favoritedItems = document.querySelector('.favoritedItems');
-const ingredient = document.querySelector('.ingredient');
-const randomRecipesContainer = document.querySelector('.random-recipes-container');
-const innerRandomRecipe = document.querySelectorAll('.inner-random-recipe');
-const randomRecipeP = document.querySelectorAll('.random-recipe-p');
-const randomRecipeImg = document.querySelectorAll('.random-recipe-img');
+import * as vars from './variables.js';
 
 const fetchData = (id, string) => {
     return getRecepi(id, string);
 };
 
-const createRandomRecipes = (() => {
+if (window.location.search) {
+    fetchData(window.location.search.split('?')[1], false)
+        .then(data => {
+            openClikcedRecepi(data)
+        });
+};
+
+(() => {
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
             .then((data) => insetRandomRecipes(data, i));
-
     };
 
     const insetRandomRecipes = (data, i) => {
-        innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
-        randomRecipeP[i].textContent = data.meals[0].strMeal;
-        randomRecipeImg[i].src = data.meals[0].strMealThumb;
+        vars.innerRandomRecipe[i].dataset.recipeId = data.meals[0].idMeal;
+        vars.randomRecipeP[i].textContent = data.meals[0].strMeal;
+        vars.randomRecipeImg[i].src = data.meals[0].strMealThumb;
+        vars.innerRandomRecipe[i].dataset.random = true;
+
+        vars.mealsDiv.classList.add('none');
     };
 })();
 
-let mealsInfo;
-const items = [headerH2, headerImg, mealsDiv, goToOunerA, likeImg, ifarme, ingredient, intrudoctions];
-
+var mealsInfo;
+const items = [vars.goToOunerA, vars.likeImg, vars.ifarme, vars.ingredient, vars.intudoctionsH5, vars.seperdLine, vars.containerImageMain, vars.containerUl];
+//  vars.shareGmail, exit from items, return on fixed function
 const recipeInputSearch = () => {
     items.map((item) => item.classList.add('none'));
+    vars.mealsDiv.classList.add('none');
 
-    fetchData(false, recipeInput.value)
+    fetchData(false, vars.recipeInput.value)
         .then(data => mealsInfo = data)
         .then((data) => insertDataToLi(data))
 };
 
-recipeButton.addEventListener("click", recipeInputSearch, false);
+vars.recipeButton.addEventListener("click", recipeInputSearch, false);
 
 const insertDataToLi = (data) => {
-    mealsDiv.classList.remove('none');
-    mealsUl.scrollIntoView({ behavior: "smooth" });
+    vars.mealsDiv.classList.remove('none');
+    vars.mealsUl.scrollIntoView({ behavior: "smooth" });
 
     if (data.meals == null) {
-        return mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
+        return vars.mealsUl.textContent = 'Sorri we coldnt find a recepi for this'
     };
 
-    mealsUl.innerHTML = null;
-    mealsDiv.classList.remove('none');
+    vars.mealsUl.innerHTML = null;
     const len = data.meals.length;
     for (let i = 0; i < len; i++) {
         const li = document.createElement('div');
@@ -73,10 +66,9 @@ const insertDataToLi = (data) => {
         li.appendChild(img);
         li.appendChild(span);
 
-        mealsUl.appendChild(li);
+        vars.mealsUl.appendChild(li);
     };
 };
-
 const openClikcedRecepi = (e) => {
     let clikedItem;
     if (e.target.dataset.liId && e.target.dataset.liId < 999) {
@@ -85,24 +77,29 @@ const openClikcedRecepi = (e) => {
         clikedItem = 0
     };
 
-    headerH2.textContent = mealsInfo.meals[clikedItem].strMeal;
-    headerImg.style.display = 'block'
-    headerImg.src = mealsInfo.meals[clikedItem].strMealThumb;
+    vars.headerH2.textContent = mealsInfo.meals[clikedItem].strMeal;
+    vars.headerImg.style.display = 'block'
+    vars.headerImg.src = mealsInfo.meals[clikedItem].strMealThumb;
     checkIngredient(mealsInfo.meals[clikedItem]);
-    intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
-    goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
-    likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
-    ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
+    vars.intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
+    vars.goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
+    vars.likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
+    vars.ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
+    // vars.pdfButton.classList.remove('none');
 
     items.map((item) => item.classList.remove('none'));
 
-    headerImg.scrollIntoView({ behavior: "smooth" });
+    if (e.target.dataset.random) {
+        vars.mealsDiv.classList.add('none');
+    }
+
+    vars.headerImg.scrollIntoView({ behavior: "smooth" });
 };
 
-mealsUl.addEventListener('click', openClikcedRecepi, false);
+vars.mealsUl.addEventListener('click', openClikcedRecepi, false);
 
 const checkIngredient = (obj) => {
-    ingUl.textContent = '';
+    vars.ingUl.textContent = '';
     let builderCounter = 0;
     for (const key in obj) {
         let inRes = /strIngredient/.test(key);
@@ -117,7 +114,7 @@ const checkIngredient = (obj) => {
             }
             span = document.createElement('span');
             span.textContent = text;
-            ingUl.appendChild(li)
+            vars.ingUl.appendChild(li)
         };
 
         if (inRes && obj[key] && inRes && obj[key] !== ' ') {
@@ -126,7 +123,7 @@ const checkIngredient = (obj) => {
         }
         if (meRes && obj[key] && meRes && obj[key] !== ' ') {
             spanBuilder(false, ` ${obj[key]}`);
-            ingUl.children[builderCounter].appendChild(span);
+            vars.ingUl.children[builderCounter].appendChild(span);
             builderCounter++;
         }
     };
@@ -158,13 +155,12 @@ const addToFav = (e) => {
             img.setAttribute('class', 'fav-img');
             favoritedItems.appendChild(li);
             li.appendChild(img);
-            console.log('i like this item');
 
         })
         .then(() => mealsInfo = temp);
 };
 
-likeImg.addEventListener('click', addToFav, false);
+vars.likeImg.addEventListener('click', addToFav, false);
 
 const openFavItem = e => {
     const reqString = e.target.classList[1];
@@ -179,7 +175,7 @@ const openFavItem = e => {
     mealsInfo = temp;
 };
 
-favoritedItems.addEventListener('click', openFavItem, false);
+vars.favoritedItems.addEventListener('click', openFavItem, false);
 
 const openFromRandom = e => {
     fetchData(parseInt(e.target.dataset.recipeId), false)
@@ -190,5 +186,68 @@ const openFromRandom = e => {
         }).then(() => mealsInfo = temp);
 };
 
-randomRecipesContainer.addEventListener('click', openFromRandom, false);
+vars.randomRecipesContainer.addEventListener('click', openFromRandom, false);
 
+// * added to make pdf file
+
+let lines;
+const createPdfFile = () => {
+
+    const doc = new jsPDF();
+    doc.addImage(vars.headerImg, 'JPEG', 15, 40, 180, 160)
+    doc.setFontSize(40);
+    doc.text(35, 25, vars.headerH2.textContent);
+    doc.setFontSize(14);
+
+
+    let textHeight = 210;
+    let textWidth = 18;
+    let ingredientText;
+
+    for (let i = 0; i < liData.length; i++) {
+        if (i == 10) {
+            textWidth += 70;
+            textHeight = 210;
+        }
+
+        doc.text(textWidth, textHeight, liData[i].children[0].innerText);
+        textWidth += doc.getTextWidth(liData[i].children[0].innerText);
+        doc.text(textWidth + 2, textHeight, liData[i].children[1].innerText);
+        textWidth -= doc.getTextWidth(liData[i].children[0].innerText);
+        textHeight += 9;
+
+        ingredientText += liData[i].children[0].innerText;
+        ingredientText += liData[i].children[1].innerText;
+
+    }
+
+
+    console.log('final getTextDimensions', doc.getTextDimensions(ingredientText) * 0.3)
+    console.log(ingredientText);
+
+    lines = doc.setFont('Times')
+        .setFontSize(15)
+        .splitTextToSize(intrudoctions.textContent, 150);
+    if (textWidth < 60 && lines.length <= 3) {
+        if (lines.length <= 13) {
+
+            doc.text(35, 310, lines);
+        }
+    } else {
+        const spText = lines.splice(13);
+        doc.text(35, 310, lines);
+        doc.addPage()
+        doc.text(35, 20, spText);
+
+    }
+    doc.save('YAMMI.COM.pdf');
+
+}
+
+
+
+// vars.pdfButton.addEventListener('click', createPdfFile, false);
+
+// https://parall.ax/products/jspdf
+// https://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html
+// https://github.com/MrRio/jsPDF
