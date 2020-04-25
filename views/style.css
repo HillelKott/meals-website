@@ -290,7 +290,7 @@ h4 {
     right: 40%;
     left: 40%;
     top: 0.8rem;
-    background-color: teal;
+    background-color: rgba(0, 0, 0, 0.418);
 }
 .ing-ul {
     margin: 0px;
