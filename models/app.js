@@ -25,7 +25,9 @@ if (window.location.search) {
         vars.randomRecipeP[i].textContent = data.meals[0].strMeal;
         vars.randomRecipeImg[i].src = data.meals[0].strMealThumb;
         vars.innerRandomRecipe[i].dataset.random = true;
-
+        console.log(vars.placeholdertext.style);
+        vars.randomRecipeImg.style.display = 'inline';
+        // vars.placeholdertext.classList.add('none');
         vars.mealsDiv.classList.add('none');
     };
 })();

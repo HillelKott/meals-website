@@ -20,7 +20,6 @@ export const getRecepi = (id, recipe) => {
 export const getRandomRecepi = () => {
     return fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         // return fetch('file:///C:/Users/Hillel%20Kott/Desktop/deploy-5e494f3d4fb0ac0009583d2b/deploy-5e494f3d4fb0ac0009583d2b/recepy.js')
-        // return fetch('../recepy.js')
         .then(data => data.json())
         .catch(e => console.log(e))
 }

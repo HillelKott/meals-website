@@ -30,6 +30,29 @@ h1 {
     }
 }
 
+@keyframes drop {
+    10% {
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 1;
+        top: 3.78em;
+        transform: rotateX(-360deg);
+    }
+    80% {
+        opacity: 1;
+        top: 3.78em;
+        transform: rotateX(-360deg);
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        top: 6.94em;
+    }
+}
+
 .main-div {
     background: url("../food-copy.jpg");
     height: 400px;
@@ -103,10 +126,6 @@ h1 {
 .meal-button:active {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='rgba(255, 255, 255, 0.418)' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none' /%3E%3C/svg%3E");
     outline: none;
-}
-
-.none {
-    display: none;
 }
 
 .logo {
@@ -236,13 +255,59 @@ h1 {
     pointer-events: none;
 }
 
-.inner-random-recipe > img {
+.place-holder {
+    width: 18rem;
+    height: 18rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.random-recipe-img {
     width: 18rem;
     transition: opacity 0.5s;
 }
 
 .inner-random-recipe:hover > img {
     opacity: 0.7;
+}
+
+.placeholdertext {
+    height: 0px;
+    z-index: 1;
+    height: fit-content;
+    display: inline-block;
+}
+
+.let {
+    position: relative;
+    top: 0.63em;
+    display: inline-block;
+    transform: rotateX(-90deg);
+}
+
+.let1 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.let2 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.let3 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.let4 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.let5 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 0.6s;
 }
 
 .random-recipe-p {
@@ -358,4 +423,8 @@ li:nth-child(even) {
     font-family: "Architects Daughter", cursive;
     margin-top: 0;
     color: rgba(255, 166, 0, 0.678);
+}
+
+.none {
+    display: none !important;
 }
