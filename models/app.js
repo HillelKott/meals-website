@@ -1,4 +1,3 @@
-
 import { getRecepi } from '../controllers/fetch.js'
 import { getRandomRecepi } from '../controllers/fetch.js'
 import * as vars from './variables.js';
@@ -6,18 +5,26 @@ import * as vars from './variables.js';
 const fetchData = (id, string) => {
     return getRecepi(id, string);
 };
+var mealsInfo;
 
 if (window.location.search) {
+    console.log('id', window.location.search);
+
     fetchData(window.location.search.split('?')[1], false)
+        .then(data => mealsInfo = data)
         .then(data => {
             openClikcedRecepi(data)
+
+            // console.log('window.location.search', data);
+
         });
 };
 
 (() => {
     for (let i = 0; i < 6; i++) {
         getRandomRecepi()
-            .then((data) => insetRandomRecipes(data, i));
+            .then((data) => insetRandomRecipes(data, i))
+
     };
 
     const insetRandomRecipes = (data, i) => {
@@ -25,14 +32,12 @@ if (window.location.search) {
         vars.randomRecipeP[i].textContent = data.meals[0].strMeal;
         vars.randomRecipeImg[i].src = data.meals[0].strMealThumb;
         vars.innerRandomRecipe[i].dataset.random = true;
-        console.log(vars.placeholdertext.style);
-        vars.randomRecipeImg.style.display = 'inline';
-        // vars.placeholdertext.classList.add('none');
+        vars.randomRecipeImg[i].style.display = 'inline';
+        vars.placeholdertext[i].classList.add('none');
         vars.mealsDiv.classList.add('none');
     };
 })();
 
-var mealsInfo;
 const items = [vars.goToOunerA, vars.likeImg, vars.ifarme, vars.ingredient, vars.intudoctionsH5, vars.seperdLine, vars.containerImageMain, vars.containerUl];
 //  vars.shareGmail, exit from items, return on fixed function
 const recipeInputSearch = () => {
@@ -60,7 +65,7 @@ const insertDataToLi = (data) => {
         const li = document.createElement('div');
         li.setAttribute('class', 'mealsUlInDiv');
         li.dataset.liId = i;
-        const span = document.createElement('span')
+        const span = document.createElement('span');
         span.textContent = data.meals[i].strMeal;
         const img = document.createElement('img');
         img.setAttribute('class', 'li-img')
@@ -73,29 +78,33 @@ const insertDataToLi = (data) => {
 };
 const openClikcedRecepi = (e) => {
     let clikedItem;
-    if (e.target.dataset.liId && e.target.dataset.liId < 999) {
+    if (e.target && e.target.dataset.liId < 999) {
+
+        // if (e.target.dataset.liId && e.target.dataset.liId < 999) {
         clikedItem = parseInt(e.target.dataset.liId);
     } else {
         clikedItem = 0
     };
 
     vars.headerH2.textContent = mealsInfo.meals[clikedItem].strMeal;
-    vars.headerImg.style.display = 'block'
+    vars.headerImg.classList.remove('none')
     vars.headerImg.src = mealsInfo.meals[clikedItem].strMealThumb;
     checkIngredient(mealsInfo.meals[clikedItem]);
     vars.intrudoctions.textContent = mealsInfo.meals[clikedItem].strInstructions;
     vars.goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
     vars.likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
     vars.ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
+    vars.shareGmail.href = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to&su=im+sharing+this+recepi+with+you&body=Click+the+link+to+see+this+${mealsInfo.meals[clikedItem].strMeal}+recepi%0D%0Ahttp://hillel-meals.netlify.com/?${mealsInfo.meals[clikedItem].idMeal}%0D%0Ahttp://127.0.0.1:5501/index.html?${mealsInfo.meals[clikedItem].idMeal}`
+
     // vars.pdfButton.classList.remove('none');
 
     items.map((item) => item.classList.remove('none'));
 
-    if (e.target.dataset.random) {
+    if (e.target && e.target.dataset.random) {
         vars.mealsDiv.classList.add('none');
     }
 
-    vars.headerImg.scrollIntoView({ behavior: "smooth" });
+    vars.seperdLineTop.scrollIntoView({ behavior: "smooth" });
 };
 
 vars.mealsUl.addEventListener('click', openClikcedRecepi, false);
@@ -141,12 +150,15 @@ const addToFav = (e) => {
             return
         }
     };
-
     fetchData(parseInt(e.target.dataset.likeImgId), false)
         .then((data) => {
             temp = mealsInfo;
             mealsInfo = data;
             favItemsId.push(mealsInfo);
+            console.log(e.target.dataset.likeImgId);
+            console.log('favItemsId ', favItemsId);
+
+
         })
         .then(() => {
             const li = document.createElement('li');
@@ -155,7 +167,7 @@ const addToFav = (e) => {
             li.setAttribute('class', `fav-item ${mealsInfo.meals[0].idMeal}`);
             img.src = mealsInfo.meals[0].strMealThumb;
             img.setAttribute('class', 'fav-img');
-            favoritedItems.appendChild(li);
+            vars.favoritedItems.appendChild(li);
             li.appendChild(img);
 
         })
@@ -179,16 +191,18 @@ const openFavItem = e => {
 
 vars.favoritedItems.addEventListener('click', openFavItem, false);
 
-const openFromRandom = e => {
-    fetchData(parseInt(e.target.dataset.recipeId), false)
+const openFromRandom = event => {
+    fetchData(parseInt(event.target.dataset.recipeId), false)
         .then(data => {
             temp = mealsInfo;
             mealsInfo = data;
-            openClikcedRecepi(e)
+            openClikcedRecepi(event)
         }).then(() => mealsInfo = temp);
 };
 
 vars.randomRecipesContainer.addEventListener('click', openFromRandom, false);
+
+
 
 // * added to make pdf file
 
@@ -206,30 +220,30 @@ const createPdfFile = () => {
     let textWidth = 18;
     let ingredientText;
 
-    for (let i = 0; i < liData.length; i++) {
+    for (let i = 0; i < vars.liData.length; i++) {
         if (i == 10) {
             textWidth += 70;
             textHeight = 210;
         }
 
-        doc.text(textWidth, textHeight, liData[i].children[0].innerText);
-        textWidth += doc.getTextWidth(liData[i].children[0].innerText);
-        doc.text(textWidth + 2, textHeight, liData[i].children[1].innerText);
-        textWidth -= doc.getTextWidth(liData[i].children[0].innerText);
+        doc.text(textWidth, textHeight, vars.liData[i].children[0].innerText);
+        textWidth += doc.getTextWidth(vars.liData[i].children[0].innerText);
+        doc.text(textWidth + 2, textHeight, vars.liData[i].children[1].innerText);
+        textWidth -= doc.getTextWidth(vars.liData[i].children[0].innerText);
         textHeight += 9;
 
-        ingredientText += liData[i].children[0].innerText;
-        ingredientText += liData[i].children[1].innerText;
+        ingredientText += vars.liData[i].children[0].innerText;
+        ingredientText += vars.liData[i].children[1].innerText;
 
     }
 
 
-    console.log('final getTextDimensions', doc.getTextDimensions(ingredientText) * 0.3)
+    console.log('final getTextDimensions', doc.getTextDimensions(ingredientText).w * 0.3)
     console.log(ingredientText);
 
     lines = doc.setFont('Times')
         .setFontSize(15)
-        .splitTextToSize(intrudoctions.textContent, 150);
+        .splitTextToSize(vars.intrudoctions.textContent, 150);
     if (textWidth < 60 && lines.length <= 3) {
         if (lines.length <= 13) {
 
@@ -253,3 +267,6 @@ const createPdfFile = () => {
 // https://parall.ax/products/jspdf
 // https://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html
 // https://github.com/MrRio/jsPDF
+
+
+// https://icons8.com/icon

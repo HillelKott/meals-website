@@ -8,12 +8,15 @@
     <title>MY MEAL'S</title>
     <script type="module" src="./models/app.js"></script>
     <link rel="stylesheet" href="./views/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Quicksand:wght@300&display=swap"
-        rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Quicksand:wght@300&display=swap" -->
     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i&display=swap" rel="stylesheet"> -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Alex+Brush|Julius+Sans+One|League+Script|Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
         integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
         crossorigin="anonymous"></script>
@@ -21,8 +24,6 @@
 </head>
 
 <body>
-
-
     <div class="main-div">
         <div class="favorite-ul-container">
             <div class="heart">
@@ -42,152 +43,244 @@
                 <input class="meal-button" type="button">
             </div>
         </div>
-    </div>
-    <!-- <span class="favorite"> -->
+        <!-- <span class="favorite"> -->
 
-    <!-- </span> -->
-    <div id="container" dir="rtl">
-        <div id="main">
-            <div class="about-recepi"></div>
-            <div class="ingredient none">
-                <br />
-                <div class="seperd-line none"></div>
+        <!-- </span> -->
+        <div id="container" dir="rtl">
+            <div id="main">
+                <div class="about-recepi"></div>
+                <div class="ingredient none">
+                    <br />
+                    <div class="seperd-line none seperd-line-top "></div>
 
-                <div class="container-image-main none">
-                    <img src="#" class="header-img" id="header-img">
-                    <img src="https://cdn.glitch.com/f75e1391-bd87-400c-8326-82fc181631f3%2Fheart.png?v=1580808629344"
-                        class="like-img none">
-                    <p class="header-h2"></p>
+                    <div class="container-image-main none">
+                        <img src="#" class="header-img" id="header-img">
+                        <!-- <img src="#" class="like-img none"> -->
+                        <p class="header-h2"></p>
+                        <div class="sharing-div">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                                class="like-svg like-img" viewBox="0 0 172 172"
+                                style=" fill:#000000;  margin-bottom: 25px;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
+                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+                                    text-anchor="none" style="mix-blend-mode: normal">
+                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                    <g fill="#ffbb3c">
+                                        <path
+                                            d="M120.2065,21.63258c-13.32642,0 -25.78925,6.02358 -34.2065,16.32567c-8.42083,-10.30208 -20.88367,-16.32567 -34.2065,-16.32567c-24.53508,0 -44.49425,20.30317 -44.49425,45.2575c0,43.13975 73.874,84.87125 77.01658,86.6235l1.677,0.93883l1.68058,-0.93167c3.14617,-1.73792 77.02733,-43.13258 77.02733,-86.63067c0,-24.95792 -19.95917,-45.2575 -44.49425,-45.2575zM86.00717,146.51892c-0.00358,0 -0.00358,-0.00358 -0.00717,-0.00358v-96.39883l2.89175,-4.43258c7.00183,-10.73925 18.70858,-17.14983 31.31475,-17.14983c20.726,0 37.59275,17.20358 37.59275,38.35242c0,36.06625 -60.8235,73.22542 -71.79208,79.63242z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <a class="share-gmail" href="#" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                                    class="gmail-svg" viewBox="0 0 172 172" style=" fill:#000000; margin-bottom: 25px;">
+                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                                        <g>
+                                            <path
+                                                d="M19.70833,145.125h132.58333c6.92658,0 12.54167,-5.61508 12.54167,-12.54167v-93.16667c0,-6.92658 -5.61508,-12.54167 -12.54167,-12.54167h-132.58333c-6.92658,0 -12.54167,5.61508 -12.54167,12.54167v93.16667c0,6.92658 5.61508,12.54167 12.54167,12.54167z"
+                                                fill="#e0e0e0"></path>
+                                            <path
+                                                d="M93.16667,145.125h59.125c6.92658,0 12.54167,-5.61508 12.54167,-12.54167v-93.16667c0,-6.92658 -5.61508,-12.54167 -12.54167,-12.54167h-132.58333c-6.92658,0 -12.54167,5.61508 -12.54167,12.54167z"
+                                                fill="#d9d9d9"></path>
+                                            <path
+                                                d="M24.16958,145.125h128.12208c6.92658,0 12.54167,-5.61508 12.54167,-12.54167v-91.375z"
+                                                fill="#eeeeee"></path>
+                                            <path
+                                                d="M92.25292,145.125h60.03875c6.92658,0 12.54167,-5.61508 12.54167,-12.54167v-91.375l-97.57058,72.08233z"
+                                                fill="#e0e0e0"></path>
+                                            <path
+                                                d="M152.29167,34.04167h-132.58333c-6.92658,0 -12.54167,-1.55158 -12.54167,5.375v93.16667c0,6.92658 5.61508,12.54167 12.54167,12.54167h5.375v-102.125h121.83333v102.125h5.375c6.92658,0 12.54167,-5.61508 12.54167,-12.54167v-93.16667c0,-6.92658 -5.61508,-5.375 -12.54167,-5.375z"
+                                                fill="#faba42"></path>
+                                            <path
+                                                d="M152.29167,26.875h-66.29167h-66.29167c-6.92658,0 -12.54167,5.504 -12.54167,12.54167c0,4.3215 5.4395,8.09117 5.4395,8.09117l73.39383,51.95117l73.39383,-51.94758c0,0 5.4395,-3.77325 5.4395,-8.09117c0,-7.04125 -5.61508,-12.54525 -12.54167,-12.54525z"
+                                                fill="#f5f5f5"></path>
+                                            <path
+                                                d="M154.96483,27.16883l-68.96483,48.08117l-68.96483,-48.08117c-5.64017,1.20758 -9.8685,6.14542 -9.8685,12.24783c0,4.3215 5.4395,8.09117 5.4395,8.09117l73.39383,51.95117l73.39383,-51.94758c0,0 5.4395,-3.77325 5.4395,-8.09117c0,-6.106 -4.22833,-11.04383 -9.8685,-12.25142z"
+                                                fill="#ffa500"></path>
+                                        </g>
+                                    </g>
+                                </svg> </a>
+
+
+                            <a href="#" target="_blank" class="go-to-ouner none">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                                    class="go-to-svg" viewBox="0 0 172 172" class="arrow-svg"
+                                    style=" fill:#000000;  margin-bottom: 25px;">
+                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                                        <g>
+                                            <path
+                                                d="M86,17.91667c37.54258,0 68.08333,30.54075 68.08333,68.08333c0,37.54258 -30.54075,68.08333 -68.08333,68.08333c-37.54258,0 -68.08333,-30.54075 -68.08333,-68.08333c0,-37.54258 30.54075,-68.08333 68.08333,-68.08333z"
+                                                fill="#ffd27c"></path>
+                                            <path d="M114.66667,86l-43,-35.83333v71.66667z" fill="#ffa500"></path>
+                                            <path d="M17.91667,75.25h60.91667v21.5h-60.91667z" fill="#ffa500"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                                class="pdf-svg pdfButton" viewBox="0 0 172 172"
+                                style=" fill:#000000;  margin-bottom: 25px;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
+                                    stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+                                    text-anchor="none" style="mix-blend-mode: normal">
+                                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                                    <g>
+                                        <path d="M143.33333,161.25h-114.66667v-150.5h78.83333l35.83333,35.83333z"
+                                            fill="#ffa500"></path>
+                                        <path d="M137.95833,50.16667h-34.04167v-34.04167z" fill="#fbe9e7"></path>
+                                        <path
+                                            d="M57.60208,139.75c-1.42617,0 -2.49758,-0.35833 -3.569,-0.71667c-3.92733,-2.15 -4.28208,-5.375 -3.569,-7.88333c1.42617,-4.3 9.28083,-9.675 19.6295,-14.33333v0c4.64042,-8.6 8.20942,-17.55833 10.35225,-25.08333c-3.569,-6.80833 -5.19583,-13.25833 -5.19583,-17.91667c0,-2.50833 0.55542,-4.65833 1.62683,-6.45c1.42617,-1.79167 3.569,-2.86667 6.42492,-2.86667c3.21067,0 5.71183,1.79167 6.78325,5.01667c1.7845,4.3 0.71308,12.18333 -1.7845,21.14167c3.569,6.09167 7.85108,11.825 12.4915,16.125c6.78325,-1.43333 12.84983,-2.15 16.77717,-1.43333c6.77608,1.075 7.8475,5.73333 7.8475,7.525c0,7.525 -7.85108,7.525 -10.707,7.525c-5.3535,0 -10.707,-2.15 -15.34742,-6.09167v0c-8.56775,2.15 -17.13192,5.01667 -23.91517,8.24167c-3.569,6.09167 -7.138,11.10833 -10.35225,13.975c-3.21067,2.50833 -5.70825,3.225 -7.49275,3.225zM85.441,99.61667c-1.42617,4.3 -3.569,8.95833 -5.3535,13.25833c4.28208,-1.43333 8.56775,-2.86667 12.84983,-3.94167c-2.85592,-2.86667 -5.3535,-6.09167 -7.49633,-9.31667z"
+                                            fill="#ffffff"></path>
+                                        <path
+                                            d="M143.33333,161.25v-57.33333h-17.91667v25.08333h-17.91667v9.675l18.06,22.575z"
+                                            fill="#ffd483">
+                                        </path>
+                                        <path d="M172,136.16667h-57.33333l28.66667,35.83333z" fill="#8e979d"></path>
+                                        <path d="M132.58333,111.08333h21.5v43h-21.5z" fill="#8e979d"></path>
+                                    </g>
+                                </g>
+                            </svg> -->
+                        </div>
+                    </div>
+                    <div class="seperd-line"></div>
+
+                    <div class="container-ul none">
+                        <p>
+                            Ingrenients
+                        </p>
+                        <ul class="ing-ul">
+                        </ul>
+                    </div>
                 </div>
-                <div class="seperd-line"></div>
-
-                <div class="container-ul none">
+                <div class="intudoctions-h5 none">
                     <p>
-                        Ingrenients
+                        Intrudoctions
                     </p>
-                    <ul class="ing-ul">
-                    </ul>
+                    <div class="intrudoctions">
+                    </div>
                 </div>
-            </div>
-            <div class="intudoctions-h5 none">
-                <p>
-                    Intrudoctions
-                </p>
-                <div class="intrudoctions">
-                </div>
-            </div>
 
-            <div class="recepi-source"></div>
-            <div class="iframe-container">
-                <iframe src="#" class="ifarme none"></iframe>
-                <div class="share-div">
-                    <!-- <a class="share-gmail none"
-                        href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMScbVfvxkFStFwcKvKwZMXDFMKdvvtKjVbVlKSLBzbJNnbHjzpDsHnqzTxvMqhRrgjChXs"
-                        target="_blank">share with gmail</a>
-                    <input type="button" value="create pdf file" class="pdfButton none"> -->
-                    <a href="#" target="_blank" class="go-to-ouner none">go to the recipes ouner website</a>
+                <div class="recepi-source"></div>
+                <div class="iframe-container">
+                    <iframe src="#" class="ifarme none"></iframe>
+                    <div class="share-div">
+
+                        <!--  <input type="button" value="create pdf file" class="pdfButton none"> -->
+                    </div>
                 </div>
-            </div>
 
 
-        </div>
+            </div>
 
-        <div class="meals none">
-            <ul class="meals--ul">
-            </ul>
-        </div>
-    </div>
-    <div class="random-cont">
-        <div class="random-recipes-container">
-            <h3 class="random-recipes-header">some recipes you may like ...</h3>
-            <div class="seperd-line"></div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
-            </div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
-            </div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
-            </div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
-            </div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
-            </div>
-            <div class="inner-random-recipe">
-                <div class="place-holder">
-                    <div class="placeholdertext">
-                        <span class="let let1">y</span>
-                        <span class="let let2">a</span>
-                        <span class="let let3">m</span>
-                        <span class="let let4">m</span>
-                        <span class="let let5">i</span>
-                    </div>
-                    <img src="#" alt=" " class="random-recipe-img none">
-                </div>
-                <p class="random-recipe-p"></p>
-                <div class="random-recipe-div"></div>
+            <div class="meals none">
+                <ul class="meals--ul">
+                </ul>
             </div>
         </div>
-    </div>
-    </div>
+        <div class="random-cont">
+            <div class="random-recipes-container">
+                <h3 class="random-recipes-header">some recipes you may like ...</h3>
+                <div class="seperd-line"></div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+                <div class="inner-random-recipe">
+                    <div class="place-holder">
+                        <div class="placeholdertext">
+                            <span class="let let1">y</span>
+                            <span class="let let2">a</span>
+                            <span class="let let3">m</span>
+                            <span class="let let4">m</span>
+                            <span class="let let5">i</span>
+                        </div>
+                        <img src="#" alt=" " class="random-recipe-img">
+                    </div>
+                    <p class="random-recipe-p"></p>
+                    <div class="random-recipe-div"></div>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

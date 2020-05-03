@@ -23,5 +23,6 @@ export const liData = document.getElementsByTagName('li');
 export const shareGmail = document.querySelector('.share-gmail');
 export const containerImageMain = document.querySelector('.container-image-main');
 export const containerUl = document.querySelector('.container-ul');
-export const placeholdertext = document.querySelector('.placeholdertext');
-// import { mainRece } from "../recepy.js";
+export const placeholdertext = document.querySelectorAll('.placeholdertext');
+export const seperdLineTop = document.querySelector('.seperd-line-top');
+
