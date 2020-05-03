@@ -94,7 +94,7 @@ const openClikcedRecepi = (e) => {
     vars.goToOunerA.href = mealsInfo.meals[clikedItem].strSource;
     vars.likeImg.dataset.likeImgId = mealsInfo.meals[clikedItem].idMeal
     vars.ifarme.src = `${mealsInfo.meals[clikedItem].strYoutube.slice(0, 24)}embed/${mealsInfo.meals[clikedItem].strYoutube.slice(32)}`;
-    vars.shareGmail.href = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to&su=im+sharing+this+recepi+with+you&body=Click+the+link+to+see+this+${mealsInfo.meals[clikedItem].strMeal}+recepi%0D%0Ahttp://hillel-meals.netlify.com/?${mealsInfo.meals[clikedItem].idMeal}%0D%0Ahttp://127.0.0.1:5501/index.html?${mealsInfo.meals[clikedItem].idMeal}`
+    vars.shareGmail.href = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to&su=im+sharing+this+recepi+with+you&body=Click+the+link+to+see+this+${mealsInfo.meals[clikedItem].strMeal}+recepi%0D%0Ahttp://hillel-meals.netlify.com/?${mealsInfo.meals[clikedItem].idMeal}`
 
     // vars.pdfButton.classList.remove('none');
 
