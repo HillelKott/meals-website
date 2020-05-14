@@ -259,7 +259,7 @@ const createPdfFile = () => {
     doc.save('YAMMI.COM.pdf');
 
 }
-
+// todo remove the thumbnail image while loading the image
 
 
 // vars.pdfButton.addEventListener('click', createPdfFile, false);
